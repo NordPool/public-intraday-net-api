@@ -11,25 +11,25 @@ namespace NPS.ID.PublicApi.Models.Draft
     public class PublicStatisticRow : BaseStatisticRow
     {
         [Description("Last traded price")]
-        public long LastPrice { get; set; }
+        public long? LastPrice { get; set; }
 
         [Description("Last traded quantity")]
-        public long LastQuantity { get; set; }
+        public long? LastQuantity { get; set; }
 
         [Description("Time of the last trade")]
-        public DateTimeOffset LastTradeTime { get; set; }
+        public DateTimeOffset? LastTradeTime { get; set; }
 
         [Description("Highest traded price")]
-        public long HighestPrice { get; set; }
+        public long? HighestPrice { get; set; }
 
         [Description("Lowest traded price")]
-        public long LowestPrice { get; set; }
+        public long? LowestPrice { get; set; }
 
         [Description("Volume Weighted Average Price for this contract")]
-        public long Vwap { get; set; }
+        public long? Vwap { get; set; }
 
         [Description("Total Contract turnover")]
-        public long Turnover { get; set; }
+        public long? Turnover { get; set; }
 
         [Description("Day Ahead Price for this contract")]
         public long? DayAheadPrice { get; set; }

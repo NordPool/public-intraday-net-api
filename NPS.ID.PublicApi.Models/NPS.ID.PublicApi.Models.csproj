@@ -90,6 +90,7 @@
     <Compile Include="Draft\PublicTradeLeg.cs" />
     <Compile Include="Draft\PublicTradeRow.cs" />
     <Compile Include="Draft\TradeRecallRequest.cs" />
+    <Compile Include="TradeRecallRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

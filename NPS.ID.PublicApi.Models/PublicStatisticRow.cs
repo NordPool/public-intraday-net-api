@@ -12,26 +12,27 @@ namespace NPS.ID.PublicApi.Models
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.6.3.0")]
     public partial class PublicStatisticRow 
     {
-        [Newtonsoft.Json.JsonProperty("lastPrice", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long LastPrice { get; set; }
+        [Newtonsoft.Json.JsonProperty("lastPrice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? LastPrice { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("lastQuantity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long LastQuantity { get; set; }
+        [Newtonsoft.Json.JsonProperty("lastQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? LastQuantity { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("lastTradeTime", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset LastTradeTime { get; set; }
+        /// <summary>Time of the last trade</summary>
+        [Newtonsoft.Json.JsonProperty("lastTradeTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTimeOffset? LastTradeTime { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("highestPrice", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long HighestPrice { get; set; }
+        [Newtonsoft.Json.JsonProperty("highestPrice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? HighestPrice { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("lowestPrice", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long LowestPrice { get; set; }
+        [Newtonsoft.Json.JsonProperty("lowestPrice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? LowestPrice { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("vwap", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long Vwap { get; set; }
+        [Newtonsoft.Json.JsonProperty("vwap", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? Vwap { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("turnover", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long Turnover { get; set; }
+        [Newtonsoft.Json.JsonProperty("turnover", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? Turnover { get; set; }
     
         [Newtonsoft.Json.JsonProperty("dayAheadPrice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public long? DayAheadPrice { get; set; }

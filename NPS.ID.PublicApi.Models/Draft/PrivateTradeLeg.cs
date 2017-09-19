@@ -17,7 +17,7 @@ namespace NPS.ID.PublicApi.Models.Draft
         public OrderStateEnum OrderState { get; set; }
         public OrderTypeEnum OrderType { get; set; }
         public string Text { get; set; }
-        public OrderActionEnum OrderAction { get; set; }
+        public OrderActionEnum? OrderAction { get; set; }
 
         public TimeInForceEnum? TimeInForce { get; set; }
     }

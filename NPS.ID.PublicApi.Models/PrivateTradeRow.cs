@@ -37,9 +37,8 @@ namespace NPS.ID.PublicApi.Models
         [Newtonsoft.Json.JsonProperty("text", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Text { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("orderAction", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public PrivateTradeLegOrderAction OrderAction { get; set; }
+        [Newtonsoft.Json.JsonProperty("orderAction", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public PrivateTradeLegOrderAction? OrderAction { get; set; }
     
         [Newtonsoft.Json.JsonProperty("timeInForce", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public PrivateTradeLegTimeInForce? TimeInForce { get; set; }
@@ -173,34 +172,34 @@ namespace NPS.ID.PublicApi.Models
     public enum PrivateTradeLegOrderAction
     {
         [System.Runtime.Serialization.EnumMember(Value = "USER_ADDED")]
-        USER_ADDED = 0,
+        USER_ADDED = 1,
     
         [System.Runtime.Serialization.EnumMember(Value = "USER_HIBERNATED")]
-        USER_HIBERNATED = 1,
+        USER_HIBERNATED = 2,
     
         [System.Runtime.Serialization.EnumMember(Value = "USER_MODIFIED")]
-        USER_MODIFIED = 2,
+        USER_MODIFIED = 3,
     
         [System.Runtime.Serialization.EnumMember(Value = "USER_DELETED")]
-        USER_DELETED = 3,
+        USER_DELETED = 4,
     
         [System.Runtime.Serialization.EnumMember(Value = "SYSTEM_HIBERNATED")]
-        SYSTEM_HIBERNATED = 4,
+        SYSTEM_HIBERNATED = 5,
     
         [System.Runtime.Serialization.EnumMember(Value = "SYSTEM_MODIFIED")]
-        SYSTEM_MODIFIED = 5,
+        SYSTEM_MODIFIED = 6,
     
         [System.Runtime.Serialization.EnumMember(Value = "SYSTEM_DELETED")]
-        SYSTEM_DELETED = 6,
+        SYSTEM_DELETED = 7,
     
         [System.Runtime.Serialization.EnumMember(Value = "PARTIAL_EXECUTION")]
-        PARTIAL_EXECUTION = 7,
+        PARTIAL_EXECUTION = 8,
     
         [System.Runtime.Serialization.EnumMember(Value = "FULL_EXECUTION")]
-        FULL_EXECUTION = 8,
+        FULL_EXECUTION = 9,
     
         [System.Runtime.Serialization.EnumMember(Value = "ICEBERG_SLICE_ADDED")]
-        ICEBERG_SLICE_ADDED = 9,
+        ICEBERG_SLICE_ADDED = 10,
     
     }
     
