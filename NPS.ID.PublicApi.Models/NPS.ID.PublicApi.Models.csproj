@@ -47,8 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Draft\BaseStatisticRow.cs" />
-    <Compile Include="Draft\CapacityRow.cs" />
     <Compile Include="CapacityRow.cs" />
     <Compile Include="ConfigurationRow.cs" />
     <Compile Include="ContractRow.cs" />
@@ -61,35 +59,7 @@
     <Compile Include="PrivateTradeRow.cs" />
     <Compile Include="PublicStatisticRow.cs" />
     <Compile Include="PublicTradeRow.cs" />
-    <Compile Include="Draft\DeliveryAreaPortfolio.cs" />
-    <Compile Include="Draft\BaseRow.cs" />
-    <Compile Include="Draft\BaseTradeRow.cs" />
-    <Compile Include="Draft\ConfigurationRow.cs" />
-    <Compile Include="Draft\ContractRow.cs" />
-    <Compile Include="Draft\DeliveryAreaRow.cs" />
-    <Compile Include="Draft\DeliveryAreaState.cs" />
-    <Compile Include="Draft\Enums.cs" />
-    <Compile Include="Draft\Error.cs" />
-    <Compile Include="Draft\BaseTradeLeg.cs" />
-    <Compile Include="Draft\HeartBeatItem.cs" />
-    <Compile Include="Draft\HeartBeatMessage.cs" />
-    <Compile Include="Draft\LocalViewRow.cs" />
-    <Compile Include="Draft\MarketPortfolio.cs" />
-    <Compile Include="Draft\Order.cs" />
-    <Compile Include="Draft\OrderEntry.cs" />
-    <Compile Include="Draft\OrderModification.cs" />
-    <Compile Include="Draft\OrderModificationRequest.cs" />
-    <Compile Include="Draft\OrderEntryRequest.cs" />
-    <Compile Include="Draft\OrderExecutionEntry.cs" />
-    <Compile Include="Draft\OrderExecutionReport.cs" />
-    <Compile Include="Draft\Portfolio.cs" />
-    <Compile Include="Draft\PrivateTradeLeg.cs" />
-    <Compile Include="Draft\PrivateTradeRow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Draft\PublicStatisticRow.cs" />
-    <Compile Include="Draft\PublicTradeLeg.cs" />
-    <Compile Include="Draft\PublicTradeRow.cs" />
-    <Compile Include="Draft\TradeRecallRequest.cs" />
     <Compile Include="TradeRecallRequest.cs" />
   </ItemGroup>
   <ItemGroup>
