@@ -1,0 +1,312 @@
+﻿<#@ template language="C#" debug="false" hostSpecific="true" #>
+<#@ CleanupBehavior processor="T4VSHost" CleanupAfterProcessingtemplate="true" #>
+<#@ output extension="/" #> 
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="System.Web.Http.dll" #>
+<#@ Assembly Name="System.Web.Routing" #>
+<#@ Assembly Name="System.Web" #>
+<#@ Assembly Name="System.Web.Mvc" #>
+<#@ Assembly Name="System.Globalization" #>
+<#@ assembly name="EnvDTE"#>
+<#@ Assembly Name="Newtonsoft.Json" #>
+<#@ Assembly Name="$(SolutionDir)\packages\NJsonSchema.9.6.5\lib\net45\NJsonSchema.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Web.Http" #>
+<#@ import namespace="System.Web.Mvc" #>
+<#@ import namespace="System.Web.Routing" #>
+<#@ import namespace="System.Globalization" #>
+<#@ import namespace="EnvDTE" #>
+<#@ import namespace="NJsonSchema" #>
+<#
+	string schemaPath = Path.GetDirectoryName(Host.TemplateFile) + "/../../public-intraday-api-jsonschema/v1"; 
+	string outputPath= Path.GetDirectoryName(Host.TemplateFile) + "/v1"; 
+	if (!Directory.Exists(schemaPath))
+    {
+		throw new Exception("Invalid SchemaPath " + schemaPath);
+    }
+	
+    var schemaFolder = new DirectoryInfo(schemaPath);
+    var outputFolder = new DirectoryInfo(outputPath);
+	Dictionary<string,JsonSchema4> schemaTypes = new Dictionary<string,JsonSchema4>();
+	Dictionary<string,JsonSchema4> schemaDefinitions = new Dictionary<string,JsonSchema4>();
+	Dictionary<string, JsonSchema4> enumTypes = new Dictionary<string,JsonSchema4>();
+
+	var hostServiceProvider = (IServiceProvider)this.Host;
+	var dte = (DTE)hostServiceProvider.GetService(typeof(DTE));
+	Project project = null;
+    foreach (var item in dte.Solution.Projects)
+    {
+		 project = item as Project;
+    }
+
+	foreach (FileInfo file in outputFolder.GetFiles())
+	{
+		file.Delete(); 
+	}
+
+    foreach (var schemaFile in schemaFolder.EnumerateFiles())
+    {
+		try {
+			//if(schemaFile.Extension != ".json")
+			//	continue;
+			var contents = File.ReadAllText(schemaFile.FullName);
+			var schema = NJsonSchema.JsonSchema4.FromJsonAsync(contents).Result;
+			schemaTypes.Add(schema.Title, schema);
+			foreach(var def in schema.Definitions)
+            {
+				schemaTypes.Add(def.Key, def.Value);
+				schemaDefinitions.Add(def.Key, def.Value);
+            }
+			enumTypes = FindEnumTypes(schemaTypes);			
+		} catch(Exception ex)
+		{
+			throw;
+		}
+    }
+
+    foreach (var enumDef in enumTypes)
+    {
+		 WriteEnum(enumDef.Key, enumDef.Value);
+		 var folder= "v1";
+		 var fileName = enumDef.Key + ".cs";
+		 SaveOutput(folder,fileName);
+		 IncludeCreatedFileToProject(project, folder,fileName);
+    }
+
+	foreach(var schema in schemaTypes)
+    {
+		WriteClass(schema.Key,schema.Value, schemaDefinitions);
+		var folder= "v1";
+		var fileName = schema.Key + ".cs";
+		SaveOutput(folder, fileName);
+		IncludeCreatedFileToProject(project, folder,fileName);
+    }
+
+#>
+<#+
+
+	public void WriteEnum(string enumName, JsonSchema4 enumValues)
+	{
+		WriteBeginBlock("enum", enumName,null);
+		WriteEnumValues(enumValues);
+		WriteEndBlock();
+	}
+
+	public void WriteClass(string typeName, NJsonSchema.JsonSchema4 schema, IDictionary<string, JsonSchema4> schemaDefinitions)
+	{
+		
+		WriteBeginBlock("class", typeName, schema.Description);
+		WriteMembers(schema, schemaDefinitions);
+		WriteEndBlock();
+	}
+
+	public void WriteBeginBlock(string blockType, string typeName, string description)
+	{
+#>
+/*
+ *  Copyright 2017 Nord Pool.
+ *  This library is intended to aid integration with Nord Pool’s Intraday API and comes without any warranty. Users of this library are responsible for separately testing and ensuring that it works according to their own standards.
+ *  Please send feedback to idapi@nordpoolgroup.com.
+ */
+
+namespace NPS.ID.PublicApi.Models.v1
+{
+<#+
+		if(!string.IsNullOrEmpty(description))
+        {
+#>
+	/// <summary><#=description#></summary>
+<#+
+        }
+#>
+	public <#=blockType#> <#=typeName#>
+	{
+<#+
+}
+	public void WriteMembers(JsonSchema4 schema, IDictionary<string, JsonSchema4> schemaDefinitions)
+	{
+		foreach(var property in schema.ActualProperties)
+        {
+			if(!string.IsNullOrEmpty(property.Value.Description))
+            {
+#>
+		/// <summary><#=property.Value.Description#></summary>
+<#+
+            }
+#>
+		public <#=MapSchemaPropertyTypeToCSTypeName(property.Value.Type, property.Value, schemaDefinitions)#> <#=GetPropertyName(property.Key)#> { get; set; }
+
+<#+
+        }
+	}
+
+	public void WriteEnumValues(JsonSchema4 schema)
+	{
+		foreach(var enumValue in schema.Enumeration)
+        {
+			if(enumValue == null) continue;
+#>
+		<#=enumValue.ToString()#>,
+<#+
+        }
+	}
+
+
+
+	public void WriteEndBlock()
+	{
+#>
+	}
+}
+<#+
+	}
+
+	private string MapSchemaPropertyTypeToCSTypeName(JsonObjectType objectType, JsonProperty property,IDictionary<string, NJsonSchema.JsonSchema4> schemaDefinitions)
+    { 
+        switch (objectType)
+        {
+            case JsonObjectType.Null | JsonObjectType.Integer: 
+                if(property.Format == "int32")
+					return "int?";
+				else 
+					return "long?";
+
+            case JsonObjectType.Integer: 
+                if(property.Format == "int32")
+					return "int";
+				else 
+					return "long";
+			case JsonObjectType.Boolean:
+					return "bool";
+			case JsonObjectType.String:
+			case JsonObjectType.Null | JsonObjectType.String:
+				if(property.Format == "date-time")
+					return "System.DateTimeOffset";
+				else if(property.IsEnumeration)
+					return GetPropertyName(property.Name) + "Enum";
+				else 
+					return "string";
+			case NJsonSchema.JsonObjectType.Array | NJsonSchema.JsonObjectType.Null:
+			case NJsonSchema.JsonObjectType.Array :
+				return "System.Collections.Generic.List<" + FindCollectionItemTypeName(property, schemaDefinitions) + ">";
+			default :
+				return "object";
+        }
+		
+    }
+
+
+
+	private string FindCollectionItemTypeName(JsonProperty property, IDictionary<string, NJsonSchema.JsonSchema4> schemaDefinitions)
+    {
+		if(property.Item.SchemaReference == null)
+			return MapSchemaPropertyTypeToCSTypeName(property.Item.Type, property,schemaDefinitions);
+		else 
+		    return FindSchemaDefinitionNameByProperties(property.Item.SchemaReference.ActualProperties, schemaDefinitions);
+    }
+
+	private string FindSchemaDefinitionNameByProperties(IReadOnlyDictionary<string, JsonProperty> properties, IDictionary<string, NJsonSchema.JsonSchema4> schemaDefinitions)
+    {
+		foreach(var def in schemaDefinitions)
+        {
+			var found = true;
+			foreach(var property in properties) 
+            {
+				if(!def.Value.ActualProperties.Any(r=>r.Key == property.Key))
+                {
+					found = false;
+					break;
+                }
+            }
+			if(found)
+				return def.Key;
+        }
+		return "object";
+    }
+
+	private string GetPropertyName(string jsonPropertyName)
+    {
+		if(jsonPropertyName.Length == 0)
+			return "";
+		var start = jsonPropertyName[0].ToString();
+		start = start.ToUpper();
+		jsonPropertyName = jsonPropertyName.Remove(0,1);
+
+		return start + jsonPropertyName;
+    }
+
+	private void IncludeCreatedFileToProject(Project dteProject, string folderName, string outputFileName)
+    {
+		return;
+		string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
+		templateDirectory = Path.Combine(templateDirectory, folderName);
+		
+		string outputFilePath = Path.Combine(templateDirectory, outputFileName);
+		
+		var projectItem = dteProject.ProjectItems.AddFromFile(outputFilePath);
+		//projectItem.ProjectItems.AddFromFile(outputFilePath);
+		//dteProjectItem.ProjectItems.AddFromFile(outputFilePath);
+    }
+
+	void SaveOutput(string folderName, string outputFileName)
+	{
+		string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
+		templateDirectory = Path.Combine(templateDirectory, folderName);
+		string outputFilePath = Path.Combine(templateDirectory, outputFileName);
+		File.WriteAllText(outputFilePath, this.GenerationEnvironment.ToString(), Encoding.Default); 
+
+		this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
+	}
+
+	private Dictionary<string, JsonSchema4> FindEnumTypes(Dictionary<string,JsonSchema4> schemaTypes)
+    {
+		
+		var list = new Dictionary<string, JsonSchema4>();
+        foreach (var schema in schemaTypes)
+        {
+			try 
+			{	        
+				foreach (var property in schema.Value.ActualProperties)
+				{
+					if(property.Value.IsEnumeration)
+					{
+						var enumValues = new List<string>();
+						foreach (var item in property.Value.Enumeration)
+						{
+							if(item != null) {
+								enumValues.Add(item.ToString());
+                            } 
+						}
+						var enumName = GetPropertyName(property.Key) + "Enum";
+						if(!list.Keys.Contains(enumName)) {
+							list.Add(enumName, property.Value);
+                        } else {
+							//var existing = list.Single(r=>r.Key == enumName);
+							//if(!existing.Value.Enumeration.SequenceEqual(property.Value.Enumeration))
+							//	throw new Exception("Incorrect enumeration definitions with enumeration name:" + enumName);
+                        }
+					}
+				}
+			
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Error when yielding enums from schem:" + schema.Key, ex);
+				return null;
+			}
+        }
+		return list;
+
+    }
+
+
+#>

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("NPS.ID.PublicApi.Models")]
-[assembly: AssemblyDescription("NPS Intraday API data model classes")]
+[assembly: AssemblyTitle("NPS.ID.PublicApi.ModelUtils")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("NPS.ID.PublicApi.Models")]
+[assembly: AssemblyProduct("NPS.ID.PublicApi.ModelUtils")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5e352a1b-667b-4cec-9cfb-3b525e139d97")]
+[assembly: Guid("636e5a23-1dcd-4be2-aacb-59370af4f7e0")]
 
 // Version information for an assembly consists of the following four values:
 //
