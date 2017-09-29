@@ -6,11 +6,11 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public class Error
+	public enum OrderModificationType
 	{
-		public ErrorCodeEnum ErrorCode { get; set; }
-
-		public string ErrorMessage { get; set; }
-
+		ACTI,
+		DEAC,
+		MODI,
+		DELE,
 	}
 }

@@ -34,11 +34,9 @@
 		throw new Exception("Invalid SchemaPath " + schemaPath);
     }
 	
-    var schemaFolder = new DirectoryInfo(schemaPath);
+    var schemaRootFolder = new DirectoryInfo(schemaPath);
     var outputFolder = new DirectoryInfo(outputPath);
 	Dictionary<string,JsonSchema4> schemaTypes = new Dictionary<string,JsonSchema4>();
-	Dictionary<string,JsonSchema4> schemaDefinitions = new Dictionary<string,JsonSchema4>();
-	Dictionary<string, JsonSchema4> enumTypes = new Dictionary<string,JsonSchema4>();
 
 	var hostServiceProvider = (IServiceProvider)this.Host;
 	var dte = (DTE)hostServiceProvider.GetService(typeof(DTE));
@@ -53,59 +51,67 @@
 		file.Delete(); 
 	}
 
-    foreach (var schemaFile in schemaFolder.EnumerateFiles())
-    {
-		try {
-			//if(schemaFile.Extension != ".json")
-			//	continue;
-			var contents = File.ReadAllText(schemaFile.FullName);
-			var schema = NJsonSchema.JsonSchema4.FromJsonAsync(contents).Result;
-			schemaTypes.Add(schema.Title, schema);
-			foreach(var def in schema.Definitions)
-            {
-				schemaTypes.Add(def.Key, def.Value);
-				schemaDefinitions.Add(def.Key, def.Value);
-            }
-			enumTypes = FindEnumTypes(schemaTypes);			
-		} catch(Exception ex)
-		{
-			throw;
-		}
-    }
-
-    foreach (var enumDef in enumTypes)
-    {
-		 WriteEnum(enumDef.Key, enumDef.Value);
-		 var folder= "v1";
-		 var fileName = enumDef.Key + ".cs";
-		 SaveOutput(folder,fileName);
-		 IncludeCreatedFileToProject(project, folder,fileName);
-    }
+	HandleFiles(schemaRootFolder,schemaTypes);
 
 	foreach(var schema in schemaTypes)
     {
-		WriteClass(schema.Key,schema.Value, schemaDefinitions);
-		var folder= "v1";
-		var fileName = schema.Key + ".cs";
-		SaveOutput(folder, fileName);
-		IncludeCreatedFileToProject(project, folder,fileName);
+		//WriteClass(schema.Key,schema.Value);
+		//var folder= "v1";
+		//var fileName = schema.Key + ".cs";
+		//SaveOutput(folder, fileName);
+		//IncludeCreatedFileToProject(project, folder,fileName);
     }
 
 #>
 <#+
 
-	public void WriteEnum(string enumName, JsonSchema4 enumValues)
-	{
-		WriteBeginBlock("enum", enumName,null);
-		WriteEnumValues(enumValues);
-		WriteEndBlock();
-	}
-
-	public void WriteClass(string typeName, NJsonSchema.JsonSchema4 schema, IDictionary<string, JsonSchema4> schemaDefinitions)
-	{
+	public void HandleFiles(DirectoryInfo schemaFolder, Dictionary<string,JsonSchema4> schemaTypes) {
 		
-		WriteBeginBlock("class", typeName, schema.Description);
-		WriteMembers(schema, schemaDefinitions);
+		foreach (var subFolder in schemaFolder.EnumerateDirectories())
+		{
+			HandleFiles(subFolder, schemaTypes);
+		}
+		foreach (var schemaFile in schemaFolder.EnumerateFiles())
+		{
+			try 
+			{
+				if(!schemaFile.Name.EndsWith(".json"))
+					continue;
+				//if(!schemaFile.Name.Contains("TradeRecallRequest"))
+				//	continue;
+				var schema = NJsonSchema.JsonSchema4.FromFileAsync(schemaFile.FullName).Result;
+				//schemaTypes.Add(GetTypeNameFromFileName(schema), schema);
+				var className = GetTypeNameFromFileName(schema);
+				WriteClass(className, schema);
+				
+				string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
+				var folder= schemaFolder.FullName.Substring(schemaFolder.FullName.IndexOf("v1"));
+
+				folder = Path.Combine(templateDirectory, folder);
+				
+				if(!Directory.Exists(folder))
+					Directory.CreateDirectory(folder);
+				var fileName = className + ".cs";
+				SaveOutput(folder, fileName);
+
+
+			} catch(Exception ex)
+			{
+				throw new Exception("Error when handling file " + schemaFile.FullName, ex);
+			}
+		}
+    }
+
+	public void WriteClass(string typeName, NJsonSchema.JsonSchema4 schema)
+	{
+		if(schema.IsEnumeration)
+			WriteBeginBlock("enum", typeName, schema.Description);
+		else
+			WriteBeginBlock("class", typeName, schema.Description);
+		if(schema.IsEnumeration)
+			WriteEnumValues(schema);
+		else
+			WriteMembers(schema);
 		WriteEndBlock();
 	}
 
@@ -132,7 +138,7 @@ namespace NPS.ID.PublicApi.Models.v1
 	{
 <#+
 }
-	public void WriteMembers(JsonSchema4 schema, IDictionary<string, JsonSchema4> schemaDefinitions)
+	public void WriteMembers(JsonSchema4 schema)
 	{
 		foreach(var property in schema.ActualProperties)
         {
@@ -143,7 +149,7 @@ namespace NPS.ID.PublicApi.Models.v1
 <#+
             }
 #>
-		public <#=MapSchemaPropertyTypeToCSTypeName(property.Value.Type, property.Value, schemaDefinitions)#> <#=GetPropertyName(property.Key)#> { get; set; }
+		public <#=MapSchemaPropertyTypeToCSTypeName(property.Value.Type, property.Value)#> <#=GetPropertyName(property.Key)#> { get; set; }
 
 <#+
         }
@@ -170,9 +176,20 @@ namespace NPS.ID.PublicApi.Models.v1
 <#+
 	}
 
-	private string MapSchemaPropertyTypeToCSTypeName(JsonObjectType objectType, JsonProperty property,IDictionary<string, NJsonSchema.JsonSchema4> schemaDefinitions)
+	private string GetTypeNameFromFileName(JsonSchema4 schema)
+    {
+		var path = schema.DocumentPath.Replace(@"/",@"\");
+		
+		return path.Substring(path.LastIndexOf(@"\")+1).Replace(".json", "");
+		
+    }
+
+	private string MapSchemaPropertyTypeToCSTypeName(JsonObjectType type, JsonProperty property)
     { 
-        switch (objectType)
+		if(property.HasSchemaReference)
+			return GetTypeNameFromFileName(property.SchemaReference);
+
+        switch (type)
         {
             case JsonObjectType.Null | JsonObjectType.Integer: 
                 if(property.Format == "int32")
@@ -197,21 +214,20 @@ namespace NPS.ID.PublicApi.Models.v1
 					return "string";
 			case NJsonSchema.JsonObjectType.Array | NJsonSchema.JsonObjectType.Null:
 			case NJsonSchema.JsonObjectType.Array :
-				return "System.Collections.Generic.List<" + FindCollectionItemTypeName(property, schemaDefinitions) + ">";
+				return "System.Collections.Generic.List<" + FindCollectionItemTypeName(property) + ">";
 			default :
 				return "object";
         }
 		
     }
 
-
-
-	private string FindCollectionItemTypeName(JsonProperty property, IDictionary<string, NJsonSchema.JsonSchema4> schemaDefinitions)
+	private string FindCollectionItemTypeName(JsonProperty property)
     {
-		if(property.Item.SchemaReference == null)
-			return MapSchemaPropertyTypeToCSTypeName(property.Item.Type, property,schemaDefinitions);
-		else 
-		    return FindSchemaDefinitionNameByProperties(property.Item.SchemaReference.ActualProperties, schemaDefinitions);
+		if(property.Item.SchemaReference != null)
+			return GetTypeNameFromFileName(property.Item.SchemaReference);
+		else  
+			return MapSchemaPropertyTypeToCSTypeName(property.Item.Type, property);
+		    //return FindSchemaDefinitionNameByProperties(property.Item.SchemaReference.ActualProperties, schemaDefinitions);
     }
 
 	private string FindSchemaDefinitionNameByProperties(IReadOnlyDictionary<string, JsonProperty> properties, IDictionary<string, NJsonSchema.JsonSchema4> schemaDefinitions)
@@ -286,7 +302,7 @@ namespace NPS.ID.PublicApi.Models.v1
 								enumValues.Add(item.ToString());
                             } 
 						}
-						var enumName = GetPropertyName(property.Key) + "Enum";
+						var enumName = GetPropertyName(property.Value.Title) + "Enum";
 						if(!list.Keys.Contains(enumName)) {
 							list.Add(enumName, property.Value);
                         } else {

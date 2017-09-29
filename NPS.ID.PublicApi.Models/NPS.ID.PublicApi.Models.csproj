@@ -31,9 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Google.Protobuf, Version=3.4.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.4.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Schema, Version=3.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.Schema.3.0.3\lib\net45\Newtonsoft.Json.Schema.dll</HintPath>
     </Reference>
     <Reference Include="NJsonSchema, Version=9.6.5.0, Culture=neutral, PublicKeyToken=c2f9c3bdfae56102, processorArchitecture=MSIL">
       <HintPath>..\packages\NJsonSchema.9.6.5\lib\net45\NJsonSchema.dll</HintPath>
@@ -52,46 +58,45 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="v1\ActionEnum.cs" />
+    <Compile Include="v1\area\DeliveryAreaPortfolio.cs" />
+    <Compile Include="v1\area\DeliveryAreaState.cs" />
     <Compile Include="v1\CapacityRow.cs" />
     <Compile Include="v1\ConfigurationRow.cs" />
     <Compile Include="v1\ContractRow.cs" />
-    <Compile Include="v1\DeliveryAreaPortfolio.cs" />
+    <Compile Include="v1\contract\ContractState.cs" />
+    <Compile Include="v1\contract\ProductType.cs" />
     <Compile Include="v1\DeliveryAreaRow.cs" />
-    <Compile Include="v1\DeliveryAreaState.cs" />
-    <Compile Include="v1\Error.cs" />
-    <Compile Include="v1\ErrorCodeEnum.cs" />
-    <Compile Include="v1\ErrorTypeEnum.cs" />
-    <Compile Include="v1\ExecutionRestrictionEnum.cs" />
-    <Compile Include="v1\HeartBeatItem.cs" />
     <Compile Include="v1\HeartbeatMessage.cs" />
+    <Compile Include="v1\heartbeat\HeartBeatItem.cs" />
     <Compile Include="v1\LocalViewRow.cs" />
-    <Compile Include="v1\MarketPortfolio.cs" />
-    <Compile Include="v1\Order.cs" />
-    <Compile Include="v1\OrderActionEnum.cs" />
-    <Compile Include="v1\OrderEntry.cs" />
+    <Compile Include="v1\market\MarketPortfolio.cs" />
     <Compile Include="v1\OrderEntryRequest.cs" />
-    <Compile Include="v1\OrderExecutionEntry.cs" />
     <Compile Include="v1\OrderExecutionReport.cs" />
-    <Compile Include="v1\OrderModification.cs" />
     <Compile Include="v1\OrderModificationRequest.cs" />
-    <Compile Include="v1\OrderModificationTypeEnum.cs" />
-    <Compile Include="v1\OrderStateEnum.cs" />
-    <Compile Include="v1\OrderTypeEnum.cs" />
-    <Compile Include="v1\OwnershipEnum.cs" />
-    <Compile Include="v1\Portfolio.cs" />
-    <Compile Include="v1\PrivateTradeLeg.cs" />
+    <Compile Include="v1\order\error\Error.cs" />
+    <Compile Include="v1\order\error\ErrorCode.cs" />
+    <Compile Include="v1\order\error\ErrorType.cs" />
+    <Compile Include="v1\order\ExecutionRestriction.cs" />
+    <Compile Include="v1\order\Order.cs" />
+    <Compile Include="v1\order\OrderAction.cs" />
+    <Compile Include="v1\order\OrderEntry.cs" />
+    <Compile Include="v1\order\OrderExecutionEntry.cs" />
+    <Compile Include="v1\order\OrderModification.cs" />
+    <Compile Include="v1\order\OrderModificationType.cs" />
+    <Compile Include="v1\order\OrderSide.cs" />
+    <Compile Include="v1\order\OrderState.cs" />
+    <Compile Include="v1\order\OrderType.cs" />
+    <Compile Include="v1\order\TimeInForce.cs" />
+    <Compile Include="v1\portfolio\Portfolio.cs" />
     <Compile Include="v1\PrivateTradeRow.cs" />
-    <Compile Include="v1\ProductTypeEnum.cs" />
     <Compile Include="v1\PublicStatisticRow.cs" />
-    <Compile Include="v1\PublicTradeLeg.cs" />
     <Compile Include="v1\PublicTradeRow.cs" />
-    <Compile Include="v1\SideEnum.cs" />
-    <Compile Include="v1\StateEnum.cs" />
-    <Compile Include="v1\TendencyEnum.cs" />
-    <Compile Include="v1\TimeInForceEnum.cs" />
+    <Compile Include="v1\statistic\Tendency.cs" />
     <Compile Include="v1\TradeRecallRequest.cs" />
-    <Compile Include="v1\TradeStateEnum.cs" />
+    <Compile Include="v1\trade\leg\LegOwnerShip.cs" />
+    <Compile Include="v1\trade\leg\PrivateTradeLeg.cs" />
+    <Compile Include="v1\trade\leg\PublicTradeLeg.cs" />
+    <Compile Include="v1\trade\TradeState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">

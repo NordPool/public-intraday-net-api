@@ -6,14 +6,13 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	/// <summary>Delivery area portfolio</summary>
-	public class DeliveryAreaPortfolio
+	/// <summary>ACTI — Active, IACT — Closed, matched(will never be reopened), HIBE — Deactivated(can be reopened)</summary>
+	public enum OrderState
 	{
-		public int AreaId { get; set; }
-
-		public System.DateTimeOffset ValidFrom { get; set; }
-
-		public System.DateTimeOffset ValidTo { get; set; }
-
+		PENDING,
+		ACTI,
+		HIBE,
+		IACT,
+		REJECTED,
 	}
 }

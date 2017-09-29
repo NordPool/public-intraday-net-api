@@ -30,8 +30,7 @@ namespace NPS.ID.PublicApi.Models.v1
 		/// <summary>If false: update information with the contents received. If true: delete entity indicated in the message</summary>
 		public bool Deleted { get; set; }
 
-		/// <summary>ACTI: Active, IACT: Expired(will never be reopened), HIBE: Closed(can be reopened)</summary>
-		public StateEnum State { get; set; }
+		public ContractState State { get; set; }
 
 		/// <summary>Currency used for the portfolio</summary>
 		public string Currency { get; set; }

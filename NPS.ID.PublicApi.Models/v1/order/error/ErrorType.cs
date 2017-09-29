@@ -6,18 +6,13 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public enum ProductTypeEnum
+	/// <summary>Technical field about message originator.</summary>
+	public enum ErrorType
 	{
-		P15MIN,
-		P30MIN,
-		P60MIN,
-		BLOCK_2H,
-		BLOCK_4H,
-		DON,
-		DB34,
-		DP,
-		DEP,
-		DB,
-		CUSTOM_BLOCK,
+		NPM,
+		PRE_TRADE,
+		MW,
+		LTS,
+		XBID,
 	}
 }

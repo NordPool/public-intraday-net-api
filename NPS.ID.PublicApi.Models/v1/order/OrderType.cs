@@ -6,9 +6,11 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public enum ExecutionRestrictionEnum
+	/// <summary>LIMIT, ICEBERG, USER_DEFINED_BLOCK</summary>
+	public enum OrderType
 	{
-		AON,
-		NON,
+		LIMIT,
+		ICEBERG,
+		USER_DEFINED_BLOCK,
 	}
 }

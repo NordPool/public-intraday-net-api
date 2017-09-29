@@ -18,15 +18,15 @@ namespace NPS.ID.PublicApi.Models.v1
 
 		public System.Collections.Generic.List<string> ContractIds { get; set; }
 
-		public OrderTypeEnum OrderType { get; set; }
+		public OrderType OrderType { get; set; }
 
 		public long UnitPrice { get; set; }
 
 		public long Quantity { get; set; }
 
-		public TimeInForceEnum TimeInForce { get; set; }
+		public TimeInForce TimeInForce { get; set; }
 
-		public ExecutionRestrictionEnum ExecutionRestriction { get; set; }
+		public ExecutionRestriction ExecutionRestriction { get; set; }
 
 		public System.DateTimeOffset ExpireTime { get; set; }
 

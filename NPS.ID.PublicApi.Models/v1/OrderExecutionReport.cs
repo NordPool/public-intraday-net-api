@@ -15,8 +15,7 @@ namespace NPS.ID.PublicApi.Models.v1
 		/// <summary>Member ID</summary>
 		public string MemberId { get; set; }
 
-		/// <summary>Technical field about message originator.</summary>
-		public ErrorTypeEnum ErrorType { get; set; }
+		public ErrorType ErrorType { get; set; }
 
 		/// <summary>An array of objects that contain fields errorCode and errorMessage.</summary>
 		public System.Collections.Generic.List<Error> Errors { get; set; }

@@ -6,33 +6,14 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public class PrivateTradeLeg
+	public class PublicTradeLeg
 	{
-		public string PortfolioId { get; set; }
-
-		public string RefOrderId { get; set; }
-
-		public string UserId { get; set; }
-
-		public long DeliveryStart { get; set; }
-
-		public long DeliveryEnd { get; set; }
-
-		public OrderStateEnum OrderState { get; set; }
-
-		public OrderTypeEnum OrderType { get; set; }
-
-		public string Text { get; set; }
-
-		public OrderActionEnum OrderAction { get; set; }
-
-		public TimeInForceEnum TimeInForce { get; set; }
+		public LegOwnerShip Ownership { get; set; }
 
 		/// <summary>Contract Id for the order</summary>
 		public string ContractId { get; set; }
 
-		/// <summary>Buy or Sell</summary>
-		public SideEnum Side { get; set; }
+		public OrderSide Side { get; set; }
 
 		public long UnitPrice { get; set; }
 

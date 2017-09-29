@@ -6,11 +6,18 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public enum TradeStateEnum
+	/// <summary>Action</summary>
+	public enum OrderAction
 	{
-		COMPLETED,
-		DISPUTED,
-		NOT_CANCELLED,
-		CANCELLED,
+		USER_ADDED,
+		USER_HIBERNATED,
+		USER_MODIFIED,
+		USER_DELETED,
+		SYSTEM_HIBERNATED,
+		SYSTEM_MODIFIED,
+		SYSTEM_DELETED,
+		PARTIAL_EXECUTION,
+		FULL_EXECUTION,
+		ICEBERG_SLICE_ADDED,
 	}
 }

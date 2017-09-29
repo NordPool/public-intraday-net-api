@@ -1,3 +1,4 @@
+ 
 /*
  *  Copyright 2017 Nord Pool.
  *  This library is intended to aid integration with Nord Pool’s Intraday API and comes without any warranty. Users of this library are responsible for separately testing and ensuring that it works according to their own standards.
@@ -6,14 +7,14 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public enum ErrorCodeEnum
+	/// <summary>Delivery area portfolio</summary>
+	public class DeliveryAreaPortfolio
 	{
-		MISSING_REQUIRED_FIELD,
-		ILLEGAL_FIELD,
-		FIELD_OUT_OF_RANGE,
-		FIELD_FORMAT_INVALID,
-		ITEM_NOT_FOUND,
-		ACCESS_MODE_VIOLATION,
-		THIRD_PARTY,
+		public int AreaId { get; set; }
+
+		public System.DateTimeOffset ValidFrom { get; set; }
+
+		public System.DateTimeOffset ValidTo { get; set; }
+
 	}
 }

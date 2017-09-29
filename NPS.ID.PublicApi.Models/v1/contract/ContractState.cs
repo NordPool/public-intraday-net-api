@@ -6,17 +6,11 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public enum ActionEnum
+	/// <summary>ACTI: Active, IACT: Expired(will never be reopened), HIBE: Closed(can be reopened)</summary>
+	public enum ContractState
 	{
-		USER_ADDED,
-		USER_HIBERNATED,
-		USER_MODIFIED,
-		USER_DELETED,
-		SYSTEM_HIBERNATED,
-		SYSTEM_MODIFIED,
-		SYSTEM_DELETED,
-		PARTIAL_EXECUTION,
-		FULL_EXECUTION,
-		ICEBERG_SLICE_ADDED,
+		HIBE,
+		IACT,
+		ACTI,
 	}
 }

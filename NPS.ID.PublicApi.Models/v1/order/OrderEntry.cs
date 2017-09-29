@@ -16,30 +16,25 @@ namespace NPS.ID.PublicApi.Models.v1
 
 		public long DeliveryAreaId { get; set; }
 
-		/// <summary>BUY/SELL</summary>
-		public SideEnum Side { get; set; }
+		public OrderSide Side { get; set; }
 
 		public long? ClipSize { get; set; }
 
 		public long? ClipPriceChange { get; set; }
 
-		/// <summary>LIMIT, ICEBERG, USER_DEFINED_BLOCK</summary>
-		public OrderTypeEnum OrderType { get; set; }
+		public OrderType OrderType { get; set; }
 
 		public long UnitPrice { get; set; }
 
 		public long Quantity { get; set; }
 
-		/// <summary>IOC, FOK, AON, NON, GTD, GFS</summary>
-		public TimeInForceEnum TimeInForce { get; set; }
+		public TimeInForce TimeInForce { get; set; }
 
-		/// <summary>“AON” (All or None): The order must be filled completely or not at all. The order stays in the order book until it is executed or removed by the system or user. This execution restriction can be used only in combination with User Defined Block Orders. “NON”: No restrictions.</summary>
-		public ExecutionRestrictionEnum ExecutionRestriction { get; set; }
+		public ExecutionRestriction ExecutionRestriction { get; set; }
 
 		public System.DateTimeOffset ExpireTime { get; set; }
 
-		/// <summary>ACTI — Active, IACT — Closed, matched(will never be reopened), HIBE — Deactivated(can be reopened)</summary>
-		public StateEnum State { get; set; }
+		public OrderState State { get; set; }
 
 		/// <summary>UUID for the order, provided by the client to track their own orders</summary>
 		public string ClientOrderId { get; set; }

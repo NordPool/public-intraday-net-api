@@ -6,11 +6,13 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public enum OrderModificationTypeEnum
+	/// <summary>IOC, FOK, AON, NON, GTD, GFS</summary>
+	public enum TimeInForce
 	{
-		ACTI,
-		DEAC,
-		MODI,
-		DELE,
+		IOC,
+		FOK,
+		NON,
+		GTD,
+		GFS,
 	}
 }

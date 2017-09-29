@@ -39,29 +39,24 @@ namespace NPS.ID.PublicApi.Models.v1
 
 		public long? DeliveryAreaId { get; set; }
 
-		/// <summary>BUY/SELL</summary>
-		public SideEnum Side { get; set; }
+		public OrderSide Side { get; set; }
 
-		/// <summary>LIMIT, ICEBERG, USER_DEFINED_BLOCK</summary>
-		public OrderTypeEnum OrderType { get; set; }
+		public OrderSide OrderType { get; set; }
 
 		public long? UnitPrice { get; set; }
 
 		public long? Quantity { get; set; }
 
-		/// <summary>IOC, FOK, AON, NON, GTD, GFS</summary>
-		public TimeInForceEnum TimeInForce { get; set; }
+		public TimeInForce TimeInForce { get; set; }
 
 		/// <summary>If timeInForce is set to GTD (Good Till Date), the expireTime will determine when the order expires</summary>
 		public System.DateTimeOffset ExpireTime { get; set; }
 
 		public string Text { get; set; }
 
-		/// <summary>ACTI — Active, IACT — Closed, matched(will never be reopened), HIBE — Deactivated(can be reopened)</summary>
-		public StateEnum State { get; set; }
+		public OrderState State { get; set; }
 
-		/// <summary>Action</summary>
-		public ActionEnum Action { get; set; }
+		public OrderAction Action { get; set; }
 
 		public long? ClipSize { get; set; }
 

@@ -6,12 +6,11 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public enum ErrorTypeEnum
+	/// <summary>UP - Last price is higher than a previous price, DOWN - Last price is lower than a previous price, EQUAL - Last price is equal to a previous price</summary>
+	public enum Tendency
 	{
-		NPM,
-		PRE_TRADE,
-		MW,
-		LTS,
-		XBID,
+		UP,
+		DOWN,
+		EQUAL,
 	}
 }

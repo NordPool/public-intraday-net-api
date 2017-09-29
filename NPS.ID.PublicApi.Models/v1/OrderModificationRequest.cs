@@ -11,7 +11,7 @@ namespace NPS.ID.PublicApi.Models.v1
 		/// <summary>Unique identifier for this request, provided by the client to track their own requests</summary>
 		public string RequestId { get; set; }
 
-		public OrderModificationTypeEnum OrderModificationType { get; set; }
+		public OrderModificationType OrderModificationType { get; set; }
 
 		public string UserId { get; set; }
 

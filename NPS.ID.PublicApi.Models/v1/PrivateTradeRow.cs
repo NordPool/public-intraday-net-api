@@ -22,8 +22,7 @@ namespace NPS.ID.PublicApi.Models.v1
 
 		public System.DateTimeOffset TradeTime { get; set; }
 
-		/// <summary>COMPLETED - the trade is completed, CANCELLED - the trade is cancelled.</summary>
-		public TradeStateEnum TradeState { get; set; }
+		public TradeState TradeState { get; set; }
 
 		/// <summary>Basic data about orders participated in the trade</summary>
 		public System.Collections.Generic.List<PrivateTradeLeg> Legs { get; set; }

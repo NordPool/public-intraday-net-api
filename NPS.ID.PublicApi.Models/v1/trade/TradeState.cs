@@ -6,12 +6,12 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public enum OrderStateEnum
+	/// <summary>COMPLETED - the trade is completed, CANCELLED - the trade is cancelled.</summary>
+	public enum TradeState
 	{
-		PENDING,
-		ACTI,
-		HIBE,
-		IACT,
-		REJECTED,
+		COMPLETED,
+		DISPUTED,
+		NOT_CANCELLED,
+		CANCELLED,
 	}
 }

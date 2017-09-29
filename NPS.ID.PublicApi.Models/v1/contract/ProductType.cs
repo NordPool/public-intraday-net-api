@@ -6,12 +6,19 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public enum OwnershipEnum
+	/// <summary>Type of product that this contract belongs to</summary>
+	public enum ProductType
 	{
-		OWN_BUY,
-		OWN_SELL,
-		COMPANY_BUY,
-		COMPANY_SELL,
-		OTHER,
+		P15MIN,
+		P30MIN,
+		P60MIN,
+		BLOCK_2H,
+		BLOCK_4H,
+		DON,
+		DB34,
+		DP,
+		DEP,
+		DB,
+		CUSTOM_BLOCK,
 	}
 }

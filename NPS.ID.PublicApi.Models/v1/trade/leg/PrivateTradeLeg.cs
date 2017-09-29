@@ -6,16 +6,32 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public class PublicTradeLeg
+	public class PrivateTradeLeg
 	{
-		/// <summary>OWN_BUY, OWN_SELL - the leg (order) is placed by current user and is on Buy or Sell side, respectively. COMPANY_BUY, COMPANY_SELL - the order was placed by different user from same Company.Order is on Buy or Sell side, respectively. OTHER - the order was placed by different company than user's.</summary>
-		public OwnershipEnum Ownership { get; set; }
+		public string PortfolioId { get; set; }
+
+		public string RefOrderId { get; set; }
+
+		public string UserId { get; set; }
+
+		public long DeliveryStart { get; set; }
+
+		public long DeliveryEnd { get; set; }
+
+		public OrderState OrderState { get; set; }
+
+		public OrderType OrderType { get; set; }
+
+		public string Text { get; set; }
+
+		public OrderAction OrderAction { get; set; }
+
+		public TimeInForce TimeInForce { get; set; }
 
 		/// <summary>Contract Id for the order</summary>
 		public string ContractId { get; set; }
 
-		/// <summary>Buy or Sell</summary>
-		public SideEnum Side { get; set; }
+		public OrderSide Side { get; set; }
 
 		public long UnitPrice { get; set; }
 

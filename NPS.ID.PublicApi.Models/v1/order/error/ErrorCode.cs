@@ -6,10 +6,14 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public enum TendencyEnum
+	public enum ErrorCode
 	{
-		UP,
-		DOWN,
-		EQUAL,
+		MISSING_REQUIRED_FIELD,
+		ILLEGAL_FIELD,
+		FIELD_OUT_OF_RANGE,
+		FIELD_FORMAT_INVALID,
+		ITEM_NOT_FOUND,
+		ACCESS_MODE_VIOLATION,
+		THIRD_PARTY,
 	}
 }

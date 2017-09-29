@@ -11,8 +11,7 @@ namespace NPS.ID.PublicApi.Models.v1
 	{
 		public long DlvryAreaId { get; set; }
 
-		/// <summary>State of the area: HIBE, IACT ACTI. Supposed to be ACTI for a tradeable area.</summary>
-		public StateEnum State { get; set; }
+		public ContractState State { get; set; }
 
 		public System.DateTimeOffset OpenAt { get; set; }
 

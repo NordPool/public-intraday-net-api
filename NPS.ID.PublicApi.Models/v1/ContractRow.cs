@@ -14,8 +14,7 @@ namespace NPS.ID.PublicApi.Models.v1
 		/// <summary>A more user friendly name for the contract (PH,QH,HH... etc)</summary>
 		public string ContractName { get; set; }
 
-		/// <summary>State of the contract:ACTI: Active, IACT: Expired(will never be reopened), HIBE: Closed(can be reopened)</summary>
-		public StateEnum State { get; set; }
+		public ContractState State { get; set; }
 
 		public long DurationSeconds { get; set; }
 
@@ -43,8 +42,7 @@ namespace NPS.ID.PublicApi.Models.v1
 		/// <summary>Medium length display name for contract</summary>
 		public string MediumDisplayName { get; set; }
 
-		/// <summary>Type of product that this contract belongs to</summary>
-		public ProductTypeEnum ProductType { get; set; }
+		public ProductType ProductType { get; set; }
 
 		/// <summary>Id of product that this contract belongs to</summary>
 		public string ProductId { get; set; }

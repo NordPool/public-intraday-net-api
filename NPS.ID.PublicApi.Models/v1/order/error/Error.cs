@@ -6,17 +6,11 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public enum OrderActionEnum
+	public class Error
 	{
-		USER_ADDED,
-		USER_HIBERNATED,
-		USER_MODIFIED,
-		USER_DELETED,
-		SYSTEM_HIBERNATED,
-		SYSTEM_MODIFIED,
-		SYSTEM_DELETED,
-		PARTIAL_EXECUTION,
-		FULL_EXECUTION,
-		ICEBERG_SLICE_ADDED,
+		public ErrorCode ErrorCode { get; set; }
+
+		public string ErrorMessage { get; set; }
+
 	}
 }
