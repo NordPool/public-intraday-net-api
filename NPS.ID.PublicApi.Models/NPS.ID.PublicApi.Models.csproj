@@ -61,6 +61,8 @@
     <Compile Include="v1\area\DeliveryAreaPortfolio.cs" />
     <Compile Include="v1\area\DeliveryAreaState.cs" />
     <Compile Include="v1\CapacityRow.cs" />
+    <Compile Include="v1\command\CommandType.cs" />
+    <Compile Include="v1\command\TokenRefreshCommand.cs" />
     <Compile Include="v1\ConfigurationRow.cs" />
     <Compile Include="v1\ContractRow.cs" />
     <Compile Include="v1\contract\ContractState.cs" />

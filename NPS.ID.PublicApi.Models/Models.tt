@@ -43,7 +43,9 @@
 	Project project = null;
     foreach (var item in dte.Solution.Projects)
     {
+		//First project is Models - project
 		 project = item as Project;
+		 break;
     }
 
 	foreach (FileInfo file in outputFolder.GetFiles())
@@ -51,25 +53,16 @@
 		file.Delete(); 
 	}
 
-	HandleFiles(schemaRootFolder,schemaTypes);
-
-	foreach(var schema in schemaTypes)
-    {
-		//WriteClass(schema.Key,schema.Value);
-		//var folder= "v1";
-		//var fileName = schema.Key + ".cs";
-		//SaveOutput(folder, fileName);
-		//IncludeCreatedFileToProject(project, folder,fileName);
-    }
+	HandleFiles(schemaRootFolder, project);
 
 #>
 <#+
 
-	public void HandleFiles(DirectoryInfo schemaFolder, Dictionary<string,JsonSchema4> schemaTypes) {
+	public void HandleFiles(DirectoryInfo schemaFolder, Project project) {
 		
 		foreach (var subFolder in schemaFolder.EnumerateDirectories())
 		{
-			HandleFiles(subFolder, schemaTypes);
+			HandleFiles(subFolder, project);
 		}
 		foreach (var schemaFile in schemaFolder.EnumerateFiles())
 		{
@@ -80,7 +73,6 @@
 				//if(!schemaFile.Name.Contains("TradeRecallRequest"))
 				//	continue;
 				var schema = NJsonSchema.JsonSchema4.FromFileAsync(schemaFile.FullName).Result;
-				//schemaTypes.Add(GetTypeNameFromFileName(schema), schema);
 				var className = GetTypeNameFromFileName(schema);
 				WriteClass(className, schema);
 				
@@ -93,7 +85,7 @@
 					Directory.CreateDirectory(folder);
 				var fileName = className + ".cs";
 				SaveOutput(folder, fileName);
-
+				IncludeCreatedFileToProject(project,Path.Combine(folder, fileName));
 
 			} catch(Exception ex)
 			{
@@ -260,17 +252,9 @@ namespace NPS.ID.PublicApi.Models.v1
 		return start + jsonPropertyName;
     }
 
-	private void IncludeCreatedFileToProject(Project dteProject, string folderName, string outputFileName)
+	private void IncludeCreatedFileToProject(Project dteProject, string filePath)
     {
-		return;
-		string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
-		templateDirectory = Path.Combine(templateDirectory, folderName);
-		
-		string outputFilePath = Path.Combine(templateDirectory, outputFileName);
-		
-		var projectItem = dteProject.ProjectItems.AddFromFile(outputFilePath);
-		//projectItem.ProjectItems.AddFromFile(outputFilePath);
-		//dteProjectItem.ProjectItems.AddFromFile(outputFilePath);
+		var projectItem = dteProject.ProjectItems.AddFromFile(filePath);
     }
 
 	void SaveOutput(string folderName, string outputFileName)
