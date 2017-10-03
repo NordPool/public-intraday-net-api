@@ -5,13 +5,15 @@
  */
 
 
-namespace Nordpool.ID.PublicApi.v1.Order
+namespace Nordpool.ID.PublicApi.v1.Statistic
 {
-	/// <summary>LIMIT, ICEBERG, USER_DEFINED_BLOCK</summary>
-	public enum OrderType 
+	/// <summary>Capacity information between areas</summary>
+	public class BaseStatisticRow  : Base.BaseRow
 	{
-		LIMIT,
-		ICEBERG,
-		USER_DEFINED_BLOCK,
+		public long DeliveryAreaId { get; set; }
+
+		/// <summary>Unique identifier for a contract</summary>
+		public string ContractId { get; set; }
+
 	}
 }

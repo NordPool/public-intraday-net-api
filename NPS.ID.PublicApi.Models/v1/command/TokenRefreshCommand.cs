@@ -4,14 +4,17 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
+using  Nordpool.ID.PublicApi.v1.Command;
 
-namespace Nordpool.ID.PublicApi.v1.Order
+namespace Nordpool.ID.PublicApi.v1
 {
-	/// <summary>LIMIT, ICEBERG, USER_DEFINED_BLOCK</summary>
-	public enum OrderType 
+	public class TokenRefreshCommand 
 	{
-		LIMIT,
-		ICEBERG,
-		USER_DEFINED_BLOCK,
+		public string OldToken { get; set; }
+
+		public string NewToken { get; set; }
+
+		public Nordpool.ID.PublicApi.v1.Command.CommandType Type { get; set; }
+
 	}
 }

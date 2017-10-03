@@ -99,6 +99,7 @@
     <Compile Include="v1\statistic\PublicStatisticRow.cs" />
     <Compile Include="v1\statistic\Tendency.cs" />
     <Compile Include="v1\trade\leg\LegOwnerShip.cs" />
+    <Compile Include="v1\trade\leg\LegOwnershipEnum.cs" />
     <Compile Include="v1\trade\leg\PrivateTradeLeg.cs" />
     <Compile Include="v1\trade\leg\PublicTradeLeg.cs" />
     <Compile Include="v1\trade\request\TradeRecallRequest.cs" />

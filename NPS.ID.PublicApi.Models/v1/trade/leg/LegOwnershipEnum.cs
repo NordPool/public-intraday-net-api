@@ -4,10 +4,11 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace Nordpool.ID.PublicApi.v1.Trade.leg.LegOwnershipEnum
+
+namespace Nordpool.ID.PublicApi.v1.Trade.Leg
 {
 	/// <summary>OWN_BUY, OWN_SELL - the leg (order) is placed by current user and is on Buy or Sell side, respectively. COMPANY_BUY, COMPANY_SELL - the order was placed by different user from same Company.Order is on Buy or Sell side, respectively. OTHER - the order was placed by different company than user's.</summary>
-	public enum LegOwnerShip 
+	public enum LegOwnershipEnum 
 	{
 		OWN_BUY,
 		OWN_SELL,

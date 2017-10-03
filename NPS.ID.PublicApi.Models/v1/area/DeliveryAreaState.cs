@@ -4,14 +4,16 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+using  Nordpool.ID.PublicApi.v1.Contract;
+
+namespace Nordpool.ID.PublicApi.v1.Area
 {
 	/// <summary>A contract can be available in many delivery areas, and for each delivery area it can have different opening and closing times. So for each area state, openAt and closeAt times are defined.</summary>
 	public class DeliveryAreaState 
 	{
 		public long DlvryAreaId { get; set; }
 
-		public ContractState State { get; set; }
+		public Nordpool.ID.PublicApi.v1.Contract.ContractState State { get; set; }
 
 		public System.DateTimeOffset OpenAt { get; set; }
 

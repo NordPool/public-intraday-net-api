@@ -4,16 +4,19 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+using  Nordpool.ID.PublicApi.v1.Trade.Leg;
+using  Nordpool.ID.PublicApi.v1.Order;
+
+namespace Nordpool.ID.PublicApi.v1.Trade.Leg
 {
 	public class PublicTradeLeg 
 	{
-		public LegOwnerShip Ownership { get; set; }
+		public Nordpool.ID.PublicApi.v1.Trade.Leg.LegOwnershipEnum Ownership { get; set; }
 
 		/// <summary>Contract Id for the order</summary>
 		public string ContractId { get; set; }
 
-		public OrderSide Side { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderSide Side { get; set; }
 
 		public long UnitPrice { get; set; }
 

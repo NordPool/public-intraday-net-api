@@ -4,18 +4,20 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+using  Nordpool.ID.PublicApi.v1.Order;
+
+namespace Nordpool.ID.PublicApi.v1.Order.Request
 {
-	public class OrderModificationRequest
+	public class OrderModificationRequest 
 	{
 		/// <summary>Unique identifier for this request, provided by the client to track their own requests</summary>
 		public string RequestId { get; set; }
 
-		public OrderModificationType OrderModificationType { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderModificationType OrderModificationType { get; set; }
 
 		public string UserId { get; set; }
 
-		public System.Collections.Generic.List<OrderModification> Orders { get; set; }
+		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Order.OrderModification> Orders { get; set; }
 
 	}
 }

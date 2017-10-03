@@ -4,10 +4,12 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+using  Nordpool.ID.PublicApi.v1.Statistic;
+
+namespace Nordpool.ID.PublicApi.v1.Statistic
 {
 	/// <summary>Provides a list of contracts available in the area with id <deliveryAreaId> and aggregated statistical data for each contract.</summary>
-	public class PublicStatisticRow
+	public class PublicStatisticRow  : BaseStatisticRow
 	{
 		public long? LastPrice { get; set; }
 
@@ -26,15 +28,7 @@ namespace NPS.ID.PublicApi.Models.v1
 
 		public long? DayAheadPrice { get; set; }
 
-		public Tendency Tendency { get; set; }
-
-		public long DeliveryAreaId { get; set; }
-
-		/// <summary>Identifier for a contract</summary>
-		public string ContractId { get; set; }
-
-		/// <summary>Last modification time (status change) of data</summary>
-		public System.DateTimeOffset UpdatedAt { get; set; }
+		public Nordpool.ID.PublicApi.v1.Statistic.Tendency Tendency { get; set; }
 
 	}
 }

@@ -5,13 +5,13 @@
  */
 
 
-namespace Nordpool.ID.PublicApi.v1.Order
+namespace Nordpool.ID.PublicApi.v1.Base
 {
-	/// <summary>LIMIT, ICEBERG, USER_DEFINED_BLOCK</summary>
-	public enum OrderType 
+	/// <summary>Class with base fields for UI models</summary>
+	public class BaseRow 
 	{
-		LIMIT,
-		ICEBERG,
-		USER_DEFINED_BLOCK,
+		/// <summary>Last modification time (status change) of data</summary>
+		public System.DateTimeOffset UpdatedAt { get; set; }
+
 	}
 }

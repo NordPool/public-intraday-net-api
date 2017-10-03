@@ -5,13 +5,13 @@
  */
 
 
-namespace Nordpool.ID.PublicApi.v1.Order
+namespace Nordpool.ID.PublicApi.v1.Portfolio
 {
-	/// <summary>LIMIT, ICEBERG, USER_DEFINED_BLOCK</summary>
-	public enum OrderType 
+	/// <summary>READ: user can view private orders and private trades, WRITE: user can view private orders and private trades. Also, user can place and modify orders and trades.</summary>
+	public enum PortfolioPermission 
 	{
-		LIMIT,
-		ICEBERG,
-		USER_DEFINED_BLOCK,
+		NONE,
+		READ,
+		WRITE,
 	}
 }

@@ -4,14 +4,15 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+
+namespace Nordpool.ID.PublicApi.v1.Heartbeat
 {
 	/// <summary>The Intraday Platform uses Heartbeat Ping messages to inform a client that the server is alive and to let the client perform consistency checking of the data received.</summary>
-	public class HeartbeatMessage
+	public class HeartbeatMessage 
 	{
 		public long Timestamp { get; set; }
 
-		public System.Collections.Generic.List<HeartBeatItem> HeartBeats { get; set; }
+		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Heartbeat.HeartbeatItem> HeartBeats { get; set; }
 
 	}
 }

@@ -4,10 +4,11 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+
+namespace Nordpool.ID.PublicApi.v1
 {
 	/// <summary>Capacity information between areas</summary>
-	public class CapacityRow  : BaseRow
+	public class CapacityRow  : Base.BaseRow
 	{
 		public int EventSequenceNo { get; set; }
 

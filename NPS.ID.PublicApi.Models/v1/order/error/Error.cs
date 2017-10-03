@@ -4,11 +4,13 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+using  Nordpool.ID.PublicApi.v1.Order.Error;
+
+namespace Nordpool.ID.PublicApi.v1.Order.Error
 {
 	public class Error 
 	{
-		public ErrorCode ErrorCode { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.Error.ErrorCode ErrorCode { get; set; }
 
 		public string ErrorMessage { get; set; }
 

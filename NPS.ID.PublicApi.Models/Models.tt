@@ -73,7 +73,7 @@
 				//if(!schemaFile.Name.Contains("TradeRecallRequest"))
 				//	continue;
 				var schema = NJsonSchema.JsonSchema4.FromFileAsync(schemaFile.FullName).Result;
-				var className = GetTypeNameFromDocumentFilePath(schema);
+				var className = GetTypeNameFromDocumentFilePath(schema, false);
 				WriteClass(className, schema);
 				
 				string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
@@ -109,6 +109,22 @@
 
 	public void WriteBeginBlock(string blockType, string typeName, NJsonSchema.JsonSchema4 schema)
 	{
+		var nameSpaceSuffix = GetNameSpaceSuffix(schema);
+		if(!string.IsNullOrEmpty(nameSpaceSuffix))
+			nameSpaceSuffix = "." + ApplyCamelCasing(nameSpaceSuffix);
+
+		var usings = new List<string>();
+		foreach(var property in schema.ActualProperties)
+        {
+			if(property.Value.HasSchemaReference) {
+				usings.Add(ApplyCamelCasing(GetNameSpaceSuffix(property.Value.SchemaReference)));
+            }
+			if(property.Value.Type == NJsonSchema.JsonObjectType.Array) {
+				if(property.Value.Item != null)
+					usings.Add(ApplyCamelCasing(GetNameSpaceSuffix(property.Value.Item.SchemaReference)));
+            }
+        }
+
 #>
 /*
  *  Copyright 2017 Nord Pool.
@@ -116,7 +132,16 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+<#+
+		foreach(var usingClause in usings.Distinct())
+        {
+#>
+using  Nordpool.ID.PublicApi.v1.<#=usingClause#>;
+<#+
+        }
+#>
+
+namespace Nordpool.ID.PublicApi.v1<#=nameSpaceSuffix#>
 {
 <#+
 		if(!string.IsNullOrEmpty(schema.Description))
@@ -130,18 +155,73 @@ namespace NPS.ID.PublicApi.Models.v1
 	{
 <#+
 }
+
+	private static string GetFullNameSpace(NJsonSchema.JsonSchema4 schema)
+    {
+		if(schema.ExtensionData == null)
+			return "";
+		var extendsClause = schema.ExtensionData.Where(r=>r.Key == "javaType").FirstOrDefault();
+
+		var suffix = "";
+		if(extendsClause.Value == null)
+			return "";
+		else
+			suffix =  extendsClause.Value.ToString();
+		suffix = suffix.Replace("com.nordpool.id.publicapi.v1.", "");
+		var typeName = GetTypeNameFromDocumentFilePath(schema, false);
+		suffix = suffix.Replace(typeName, "");
+		if(suffix == "")
+			return "Nordpool.ID.PublicApi.v1";
+		return "Nordpool.ID.PublicApi.v1." + ApplyCamelCasing(suffix.Trim('.'));
+
+    }
+
+	private static string GetNameSpaceSuffix(NJsonSchema.JsonSchema4 schema)
+    {
+		if(schema.ExtensionData == null)
+			return "";
+		var extendsClause = schema.ExtensionData.Where(r=>r.Key == "javaType").FirstOrDefault();
+
+		var suffix = "";
+		if(extendsClause.Value == null)
+			return "";
+		else
+			suffix =  extendsClause.Value.ToString();
+		suffix = suffix.Replace("com.nordpool.id.publicapi.v1.", "");
+		var typeName = GetTypeNameFromDocumentFilePath(schema, false);
+		suffix = suffix.Replace(typeName, "");
+
+		return suffix.Trim('.');
+
+    }
+
 	private static string GetBaseClassDefinition(NJsonSchema.JsonSchema4 schema)
     {
 		if(schema.ExtensionData == null)
 			return "";
+
 		var extendsClause = schema.ExtensionData.Where(r=>r.Key == "extends").FirstOrDefault();
 		if(extendsClause.Value == null)
 			return "";
-		var extendsObject = extendsClause.Value as System.Collections.Generic.Dictionary<string, object>;
-		var baseClassName = extendsObject.Where(r=>r.Key == "schemaReferencePath").FirstOrDefault().Value.ToString();
 
-		return " : " + GetTypeNameFromFilePath(baseClassName);
+		var extendsObject = extendsClause.Value as System.Collections.Generic.Dictionary<string, object>;
+		var referencedSchemaPath = extendsObject.Where(r=>r.Key == "schemaReferencePath").FirstOrDefault().Value.ToString();
+		var subFolderName = GetSubFolderFromReferencedSchemaPath(referencedSchemaPath);
+		//name can contain ../base/
+		var nameSpacePrefix = subFolderName.Replace("/",".").Trim('.');
+		nameSpacePrefix = ApplyCamelCasing(nameSpacePrefix);
+		if(!string.IsNullOrEmpty(nameSpacePrefix))
+			nameSpacePrefix = nameSpacePrefix + ".";
+		return " : " + nameSpacePrefix + GetTypeNameFromFilePath(referencedSchemaPath);
     }
+
+	private static string GetSubFolderFromReferencedSchemaPath(string schemaPath) 
+    {
+		var typeName = GetTypeNameFromFilePath(schemaPath);
+		
+		return schemaPath.Replace(typeName, "").Replace(".json","");
+	}
+
 	public void WriteMembers(JsonSchema4 schema)
 	{
 		foreach(var property in schema.ActualProperties)
@@ -153,7 +233,7 @@ namespace NPS.ID.PublicApi.Models.v1
 <#+
             }
 #>
-		public <#=MapSchemaPropertyTypeToCSTypeName(property.Value.Type, property.Value)#> <#=GetPropertyName(property.Key)#> { get; set; }
+		public <#=MapSchemaPropertyTypeToCSTypeName(property.Value.Type, property.Value)#> <#=ApplyCamelCasing(property.Key)#> { get; set; }
 
 <#+
         }
@@ -180,21 +260,29 @@ namespace NPS.ID.PublicApi.Models.v1
 <#+
 	}
 
-	private string GetTypeNameFromDocumentFilePath(JsonSchema4 schema)
+	private static string GetTypeNameFromDocumentFilePath(JsonSchema4 schema, bool includeFullyQualifiedNameSpace)
     {
-		return GetTypeNameFromFilePath(schema.DocumentPath);
+		var typeName =  GetTypeNameFromFilePath(schema.DocumentPath);
+		if(includeFullyQualifiedNameSpace) 
+        {
+			return GetFullNameSpace(schema) + "." + typeName;
+        }else 
+			return typeName;
+
     }
 
 	private static string GetTypeNameFromFilePath(string filePath)
     {
 		var path = filePath.Replace(@"/",@"\");
-		return path.Substring(path.LastIndexOf(@"\")+1).Replace(".json", "");
+		var typeName =  path.Substring(path.LastIndexOf(@"\")+1).Replace(".json", "");
+
+		return typeName;
     }
 
 	private string MapSchemaPropertyTypeToCSTypeName(JsonObjectType type, JsonProperty property)
     { 
 		if(property.HasSchemaReference)
-			return GetTypeNameFromDocumentFilePath(property.SchemaReference);
+			return GetTypeNameFromDocumentFilePath(property.SchemaReference, true);
 
         switch (type)
         {
@@ -216,22 +304,22 @@ namespace NPS.ID.PublicApi.Models.v1
 				if(property.Format == "date-time")
 					return "System.DateTimeOffset";
 				else if(property.IsEnumeration)
-					return GetPropertyName(property.Name) + "Enum";
+					return ApplyCamelCasing(property.Name);
 				else 
 					return "string";
 			case NJsonSchema.JsonObjectType.Array | NJsonSchema.JsonObjectType.Null:
 			case NJsonSchema.JsonObjectType.Array :
-				return "System.Collections.Generic.List<" + FindCollectionItemTypeName(property) + ">";
+				return "System.Collections.Generic.List<" + FindCollectionItemTypeName(property, true) + ">";
 			default :
 				return "object";
         }
 		
     }
 
-	private string FindCollectionItemTypeName(JsonProperty property)
+	private string FindCollectionItemTypeName(JsonProperty property, bool includeFullyQualifiedNameSpace)
     {
 		if(property.Item.SchemaReference != null)
-			return GetTypeNameFromDocumentFilePath(property.Item.SchemaReference);
+			return GetTypeNameFromDocumentFilePath(property.Item.SchemaReference, includeFullyQualifiedNameSpace);
 		else  
 			return MapSchemaPropertyTypeToCSTypeName(property.Item.Type, property);
 		    //return FindSchemaDefinitionNameByProperties(property.Item.SchemaReference.ActualProperties, schemaDefinitions);
@@ -256,15 +344,23 @@ namespace NPS.ID.PublicApi.Models.v1
 		return "object";
     }
 
-	private string GetPropertyName(string jsonPropertyName)
+	private static string ApplyCamelCasing(string jsonPropertyName)
     {
-		if(jsonPropertyName.Length == 0)
+        if(jsonPropertyName.Length == 0 || jsonPropertyName.Length == 1)
 			return "";
-		var start = jsonPropertyName[0].ToString();
-		start = start.ToUpper();
-		jsonPropertyName = jsonPropertyName.Remove(0,1);
+		string[] namePart = jsonPropertyName.Split('.');
+		string fullName = "";
 
-		return start + jsonPropertyName;
+		foreach(var part in namePart) {
+			var firstChar = part[0].ToString();
+			firstChar = firstChar.ToUpper();
+			var rest = part.Remove(0,1);
+			var partName = firstChar + rest;
+		
+			fullName = fullName + "." + partName;
+        }
+
+		return fullName.Trim('.');
     }
 
 	private void IncludeCreatedFileToProject(Project dteProject, string filePath)
@@ -281,47 +377,4 @@ namespace NPS.ID.PublicApi.Models.v1
 
 		this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
 	}
-
-	private Dictionary<string, JsonSchema4> FindEnumTypes(Dictionary<string,JsonSchema4> schemaTypes)
-    {
-		
-		var list = new Dictionary<string, JsonSchema4>();
-        foreach (var schema in schemaTypes)
-        {
-			try 
-			{	        
-				foreach (var property in schema.Value.ActualProperties)
-				{
-					if(property.Value.IsEnumeration)
-					{
-						var enumValues = new List<string>();
-						foreach (var item in property.Value.Enumeration)
-						{
-							if(item != null) {
-								enumValues.Add(item.ToString());
-                            } 
-						}
-						var enumName = GetPropertyName(property.Value.Title) + "Enum";
-						if(!list.Keys.Contains(enumName)) {
-							list.Add(enumName, property.Value);
-                        } else {
-							//var existing = list.Single(r=>r.Key == enumName);
-							//if(!existing.Value.Enumeration.SequenceEqual(property.Value.Enumeration))
-							//	throw new Exception("Incorrect enumeration definitions with enumeration name:" + enumName);
-                        }
-					}
-				}
-			
-			}
-			catch (Exception ex)
-			{
-				throw new Exception("Error when yielding enums from schem:" + schema.Key, ex);
-				return null;
-			}
-        }
-		return list;
-
-    }
-
-
 #>

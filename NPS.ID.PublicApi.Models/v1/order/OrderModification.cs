@@ -4,7 +4,9 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+using  Nordpool.ID.PublicApi.v1.Order;
+
+namespace Nordpool.ID.PublicApi.v1.Order
 {
 	public class OrderModification 
 	{
@@ -18,15 +20,15 @@ namespace NPS.ID.PublicApi.Models.v1
 
 		public System.Collections.Generic.List<string> ContractIds { get; set; }
 
-		public OrderType OrderType { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderType OrderType { get; set; }
 
 		public long UnitPrice { get; set; }
 
 		public long Quantity { get; set; }
 
-		public TimeInForce TimeInForce { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.TimeInForce TimeInForce { get; set; }
 
-		public ExecutionRestriction ExecutionRestriction { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.ExecutionRestriction ExecutionRestriction { get; set; }
 
 		public System.DateTimeOffset ExpireTime { get; set; }
 

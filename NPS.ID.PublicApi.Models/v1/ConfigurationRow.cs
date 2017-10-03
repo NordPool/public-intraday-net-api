@@ -4,7 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+
+namespace Nordpool.ID.PublicApi.v1
 {
 	/// <summary>Configuration row. See documentation from: https://developers.nordpoolgroup.com/docs/configuration</summary>
 	public class ConfigurationRow 
@@ -13,7 +14,7 @@ namespace NPS.ID.PublicApi.Models.v1
 		public System.Collections.Generic.List<long> ThrottlingLimit { get; set; }
 
 		/// <summary>An array of portfolios which are accessible for the logged in user.</summary>
-		public System.Collections.Generic.List<Portfolio> Portfolios { get; set; }
+		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Portfolio.Portfolio> Portfolios { get; set; }
 
 	}
 }

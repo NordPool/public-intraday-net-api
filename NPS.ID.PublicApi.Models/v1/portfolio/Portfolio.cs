@@ -4,7 +4,10 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+using  Nordpool.ID.PublicApi.v1.Portfolio;
+using  Nordpool.ID.PublicApi.v1.Contract;
+
+namespace Nordpool.ID.PublicApi.v1.Portfolio
 {
 	public class Portfolio 
 	{
@@ -20,7 +23,7 @@ namespace NPS.ID.PublicApi.Models.v1
 		/// <summary>Company unique identifier that portfolios are assigned to.</summary>
 		public string CompanyId { get; set; }
 
-		public PortfolioPermission Permission { get; set; }
+		public Nordpool.ID.PublicApi.v1.Portfolio.PortfolioPermission Permission { get; set; }
 
 		public System.DateTimeOffset ValidFrom { get; set; }
 
@@ -29,16 +32,16 @@ namespace NPS.ID.PublicApi.Models.v1
 		/// <summary>If false: update information with the contents received. If true: delete entity indicated in the message</summary>
 		public bool Deleted { get; set; }
 
-		public ContractState State { get; set; }
+		public Nordpool.ID.PublicApi.v1.Contract.ContractState State { get; set; }
 
 		/// <summary>Currency used for the portfolio</summary>
 		public string Currency { get; set; }
 
 		/// <summary>List of areas in which the portfolio is valid</summary>
-		public System.Collections.Generic.List<DeliveryAreaPortfolio> Areas { get; set; }
+		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Area.DeliveryAreaPortfolio> Areas { get; set; }
 
 		/// <summary>List of markets where given portfolio can trade</summary>
-		public System.Collections.Generic.List<MarketPortfolio> Markets { get; set; }
+		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Market.MarketPortfolio> Markets { get; set; }
 
 	}
 }

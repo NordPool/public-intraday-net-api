@@ -5,13 +5,11 @@
  */
 
 
-namespace Nordpool.ID.PublicApi.v1.Order
+namespace Nordpool.ID.PublicApi.v1.Command
 {
-	/// <summary>LIMIT, ICEBERG, USER_DEFINED_BLOCK</summary>
-	public enum OrderType 
+	public enum CommandType 
 	{
-		LIMIT,
-		ICEBERG,
-		USER_DEFINED_BLOCK,
+		LOGOUT,
+		TOKEN_REFRESH,
 	}
 }

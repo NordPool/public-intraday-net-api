@@ -4,7 +4,9 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+using  Nordpool.ID.PublicApi.v1.Order;
+
+namespace Nordpool.ID.PublicApi.v1.Order
 {
 	public class OrderEntry 
 	{
@@ -16,25 +18,25 @@ namespace NPS.ID.PublicApi.Models.v1
 
 		public long DeliveryAreaId { get; set; }
 
-		public OrderSide Side { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderSide Side { get; set; }
 
 		public long? ClipSize { get; set; }
 
 		public long? ClipPriceChange { get; set; }
 
-		public OrderType OrderType { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderType OrderType { get; set; }
 
 		public long UnitPrice { get; set; }
 
 		public long Quantity { get; set; }
 
-		public TimeInForce TimeInForce { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.TimeInForce TimeInForce { get; set; }
 
-		public ExecutionRestriction ExecutionRestriction { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.ExecutionRestriction ExecutionRestriction { get; set; }
 
 		public System.DateTimeOffset ExpireTime { get; set; }
 
-		public OrderState State { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderState State { get; set; }
 
 		/// <summary>UUID for the order, provided by the client to track their own orders</summary>
 		public string ClientOrderId { get; set; }

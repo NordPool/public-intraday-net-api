@@ -4,9 +4,10 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+
+namespace Nordpool.ID.PublicApi.v1
 {
-	public class DeliveryAreaRow  : BaseRow
+	public class DeliveryAreaRow  : Base.BaseRow
 	{
 		public long DeliveryAreaId { get; set; }
 

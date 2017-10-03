@@ -4,7 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+
+namespace Nordpool.ID.PublicApi.v1.Order
 {
 	/// <summary>“AON” (All or None): The order must be filled completely or not at all. The order stays in the order book until it is executed or removed by the system or user. This execution restriction can be used only in combination with User Defined Block Orders. “NON”: No restrictions.</summary>
 	public enum ExecutionRestriction 

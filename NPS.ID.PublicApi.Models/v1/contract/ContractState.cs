@@ -4,7 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+
+namespace Nordpool.ID.PublicApi.v1.Contract
 {
 	/// <summary>ACTI: Active, IACT: Expired(will never be reopened), HIBE: Closed(can be reopened)</summary>
 	public enum ContractState 

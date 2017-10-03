@@ -4,12 +4,14 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+using  Nordpool.ID.PublicApi.v1.Trade.Leg;
+
+namespace Nordpool.ID.PublicApi.v1
 {
-	public class PublicTradeRow  : BaseTradeRow
+	public class PublicTradeRow  : Base.BaseTradeRow
 	{
 		/// <summary>Basic data about orders participated in the trade</summary>
-		public System.Collections.Generic.List<PublicTradeLeg> Legs { get; set; }
+		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Trade.Leg.PublicTradeLeg> Legs { get; set; }
 
 	}
 }

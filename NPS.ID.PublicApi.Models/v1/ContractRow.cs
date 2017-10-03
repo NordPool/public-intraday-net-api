@@ -4,9 +4,12 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+using  Nordpool.ID.PublicApi.v1.Contract;
+using  Nordpool.ID.PublicApi.v1.Area;
+
+namespace Nordpool.ID.PublicApi.v1
 {
-	public class ContractRow  : BaseRow
+	public class ContractRow  : Base.BaseRow
 	{
 		/// <summary>Unique identifier for a contract</summary>
 		public string ContractId { get; set; }
@@ -14,7 +17,7 @@ namespace NPS.ID.PublicApi.Models.v1
 		/// <summary>A more user friendly name for the contract (PH,QH,HH... etc)</summary>
 		public string ContractName { get; set; }
 
-		public ContractState State { get; set; }
+		public Nordpool.ID.PublicApi.v1.Contract.ContractState State { get; set; }
 
 		public long DurationSeconds { get; set; }
 
@@ -31,7 +34,7 @@ namespace NPS.ID.PublicApi.Models.v1
 		public System.DateTimeOffset DlvryEnd { get; set; }
 
 		/// <summary>A contract can be available in many delivery areas, and for each delivery area it can have different opening and closing times. So for each area state, openAt and closeAt times are defined.</summary>
-		public System.Collections.Generic.List<DeliveryAreaState> DlvryAreaState { get; set; }
+		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Area.DeliveryAreaState> DlvryAreaState { get; set; }
 
 		/// <summary>Id of the market that this contract belongs to, for example a code for XBID market.</summary>
 		public string MarketId { get; set; }
@@ -42,7 +45,7 @@ namespace NPS.ID.PublicApi.Models.v1
 		/// <summary>Medium length display name for contract</summary>
 		public string MediumDisplayName { get; set; }
 
-		public ProductType ProductType { get; set; }
+		public Nordpool.ID.PublicApi.v1.Contract.ProductType ProductType { get; set; }
 
 		/// <summary>Id of product that this contract belongs to</summary>
 		public string ProductId { get; set; }

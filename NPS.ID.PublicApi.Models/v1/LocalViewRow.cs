@@ -4,15 +4,16 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+
+namespace Nordpool.ID.PublicApi.v1
 {
-	public class LocalViewRow  : BaseRow
+	public class LocalViewRow  : Base.BaseRow
 	{
 		/// <summary>Basic data for BUY orders</summary>
-		public System.Collections.Generic.List<Order> BuyOrders { get; set; }
+		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Order.Order> BuyOrders { get; set; }
 
 		/// <summary>Basic data for SELL orders</summary>
-		public System.Collections.Generic.List<Order> SellOrders { get; set; }
+		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Order.Order> SellOrders { get; set; }
 
 		/// <summary>ID of the contract that this order belongs to</summary>
 		public string ContractId { get; set; }

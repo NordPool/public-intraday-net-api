@@ -4,10 +4,12 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+using  Nordpool.ID.PublicApi.v1.Order.Error;
+
+namespace Nordpool.ID.PublicApi.v1
 {
 	/// <summary>In response to an order creation or modification request described in Creating and modifying orders and for any order updates, the Intraday Platform will send an Order Execution Report message.</summary>
-	public class OrderExecutionReport  : BaseRow
+	public class OrderExecutionReport  : Base.BaseRow
 	{
 		/// <summary>Unique identifier for this request, provided by the client to track their own requests</summary>
 		public string RequestId { get; set; }
@@ -15,13 +17,13 @@ namespace NPS.ID.PublicApi.Models.v1
 		/// <summary>Member ID</summary>
 		public string MemberId { get; set; }
 
-		public ErrorType ErrorType { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.Error.ErrorType ErrorType { get; set; }
 
 		/// <summary>An array of objects that contain fields errorCode and errorMessage.</summary>
-		public System.Collections.Generic.List<Error> Errors { get; set; }
+		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Order.Error.Error> Errors { get; set; }
 
 		/// <summary>Order execution entries</summary>
-		public System.Collections.Generic.List<OrderExecutionEntry> Orders { get; set; }
+		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Order.OrderExecutionEntry> Orders { get; set; }
 
 	}
 }

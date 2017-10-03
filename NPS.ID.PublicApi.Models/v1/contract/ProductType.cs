@@ -4,7 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+
+namespace Nordpool.ID.PublicApi.v1.Contract
 {
 	/// <summary>Type of product that this contract belongs to</summary>
 	public enum ProductType 

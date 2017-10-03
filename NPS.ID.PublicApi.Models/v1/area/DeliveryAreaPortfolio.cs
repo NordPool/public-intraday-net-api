@@ -5,7 +5,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+
+namespace Nordpool.ID.PublicApi.v1.Area
 {
 	/// <summary>Delivery area portfolio</summary>
 	public class DeliveryAreaPortfolio 

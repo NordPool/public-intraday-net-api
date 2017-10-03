@@ -4,9 +4,10 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+
+namespace Nordpool.ID.PublicApi.v1.Trade.Request
 {
-	public class TradeRecallRequest
+	public class TradeRecallRequest 
 	{
 		public string TradeId { get; set; }
 

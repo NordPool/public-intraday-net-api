@@ -4,7 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+
+namespace Nordpool.ID.PublicApi.v1.Trade
 {
 	/// <summary>COMPLETED - the trade is completed, CANCELLED - the trade is cancelled.</summary>
 	public enum TradeState 

@@ -4,9 +4,10 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+
+namespace Nordpool.ID.PublicApi.v1.Order.Request
 {
-	public class OrderEntryRequest
+	public class OrderEntryRequest 
 	{
 		/// <summary>Unique identifier for this request, provided by the client to track their own requests</summary>
 		public string RequestId { get; set; }
@@ -15,7 +16,7 @@ namespace NPS.ID.PublicApi.Models.v1
 		public bool RejectPartially { get; set; }
 
 		/// <summary>List of orders</summary>
-		public System.Collections.Generic.List<OrderEntry> Orders { get; set; }
+		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Order.OrderEntry> Orders { get; set; }
 
 	}
 }

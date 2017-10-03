@@ -4,7 +4,9 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+using  Nordpool.ID.PublicApi.v1.Order;
+
+namespace Nordpool.ID.PublicApi.v1.Order
 {
 	public class OrderExecutionEntry 
 	{
@@ -39,24 +41,24 @@ namespace NPS.ID.PublicApi.Models.v1
 
 		public long? DeliveryAreaId { get; set; }
 
-		public OrderSide Side { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderSide Side { get; set; }
 
-		public OrderType OrderType { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderType OrderType { get; set; }
 
 		public long? UnitPrice { get; set; }
 
 		public long? Quantity { get; set; }
 
-		public TimeInForce TimeInForce { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.TimeInForce TimeInForce { get; set; }
 
 		/// <summary>If timeInForce is set to GTD (Good Till Date), the expireTime will determine when the order expires</summary>
 		public System.DateTimeOffset ExpireTime { get; set; }
 
 		public string Text { get; set; }
 
-		public OrderState State { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderState State { get; set; }
 
-		public OrderAction Action { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderAction Action { get; set; }
 
 		public long? ClipSize { get; set; }
 
@@ -64,7 +66,7 @@ namespace NPS.ID.PublicApi.Models.v1
 
 		public long? RemainingQuantity { get; set; }
 
-		public System.Collections.Generic.List<Error> Errors { get; set; }
+		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Order.Error.Error> Errors { get; set; }
 
 	}
 }

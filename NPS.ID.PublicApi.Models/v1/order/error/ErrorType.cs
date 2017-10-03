@@ -4,7 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-namespace NPS.ID.PublicApi.Models.v1
+
+namespace Nordpool.ID.PublicApi.v1.Order.Error
 {
 	/// <summary>Technical field about message originator.</summary>
 	public enum ErrorType 
