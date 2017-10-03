@@ -7,7 +7,7 @@
 namespace NPS.ID.PublicApi.Models.v1
 {
 	/// <summary>Capacity information between areas</summary>
-	public class CapacityRow
+	public class CapacityRow  : BaseRow
 	{
 		public int EventSequenceNo { get; set; }
 
@@ -20,16 +20,13 @@ namespace NPS.ID.PublicApi.Models.v1
 
 		public long DeliveryAreaTo { get; set; }
 
-		public long DeliveryAreaStart { get; set; }
+		public long DeliveryStart { get; set; }
 
-		public long DeliveryAreaEnd { get; set; }
+		public long DeliveryEnd { get; set; }
 
 		public int InCapacity { get; set; }
 
 		public int OutCapacity { get; set; }
-
-		/// <summary>Last modification time (status change) of data</summary>
-		public System.DateTimeOffset UpdatedAt { get; set; }
 
 	}
 }

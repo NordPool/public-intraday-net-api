@@ -6,13 +6,10 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public class Portfolio
+	public class Portfolio 
 	{
 		/// <summary>Portfolio unique identifier created by the trading platform.</summary>
 		public string Id { get; set; }
-
-		/// <summary>[TODO TenantId description]</summary>
-		public string TenantId { get; set; }
 
 		/// <summary>Portfolio name in a human readable format.</summary>
 		public string Name { get; set; }
@@ -22,6 +19,8 @@ namespace NPS.ID.PublicApi.Models.v1
 
 		/// <summary>Company unique identifier that portfolios are assigned to.</summary>
 		public string CompanyId { get; set; }
+
+		public PortfolioPermission Permission { get; set; }
 
 		public System.DateTimeOffset ValidFrom { get; set; }
 

@@ -7,7 +7,7 @@
 namespace NPS.ID.PublicApi.Models.v1
 {
 	/// <summary>Type of product that this contract belongs to</summary>
-	public enum ProductType
+	public enum ProductType 
 	{
 		P15MIN,
 		P30MIN,

@@ -6,7 +6,7 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public class HeartBeatItem
+	public class HeartbeatItem 
 	{
 		/// <summary>A topic that the current user is subscribed to</summary>
 		public string Topic { get; set; }

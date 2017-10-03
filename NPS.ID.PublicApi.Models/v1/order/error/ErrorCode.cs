@@ -6,7 +6,7 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public enum ErrorCode
+	public enum ErrorCode 
 	{
 		MISSING_REQUIRED_FIELD,
 		ILLEGAL_FIELD,

@@ -7,7 +7,7 @@
 namespace NPS.ID.PublicApi.Models.v1
 {
 	/// <summary>Market portfolio</summary>
-	public class MarketPortfolio
+	public class MarketPortfolio 
 	{
 		/// <summary>Market unique identifier</summary>
 		public string MarketId { get; set; }

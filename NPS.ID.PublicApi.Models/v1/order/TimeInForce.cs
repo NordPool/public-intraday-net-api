@@ -7,7 +7,7 @@
 namespace NPS.ID.PublicApi.Models.v1
 {
 	/// <summary>IOC, FOK, AON, NON, GTD, GFS</summary>
-	public enum TimeInForce
+	public enum TimeInForce 
 	{
 		IOC,
 		FOK,

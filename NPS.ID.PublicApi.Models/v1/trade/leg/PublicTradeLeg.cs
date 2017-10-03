@@ -6,7 +6,7 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public class PublicTradeLeg
+	public class PublicTradeLeg 
 	{
 		public LegOwnerShip Ownership { get; set; }
 

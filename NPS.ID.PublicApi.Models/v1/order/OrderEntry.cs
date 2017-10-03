@@ -6,7 +6,7 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public class OrderEntry
+	public class OrderEntry 
 	{
 		/// <summary>The portfolio id of the current order</summary>
 		public string PortfolioId { get; set; }

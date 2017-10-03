@@ -7,7 +7,7 @@
 namespace NPS.ID.PublicApi.Models.v1
 {
 	/// <summary>Configuration row. See documentation from: https://developers.nordpoolgroup.com/docs/configuration</summary>
-	public class ConfigurationRow
+	public class ConfigurationRow 
 	{
 		/// <summary>An array of throttling limits</summary>
 		public System.Collections.Generic.List<long> ThrottlingLimit { get; set; }

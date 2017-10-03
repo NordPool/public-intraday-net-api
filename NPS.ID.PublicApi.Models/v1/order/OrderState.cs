@@ -7,7 +7,7 @@
 namespace NPS.ID.PublicApi.Models.v1
 {
 	/// <summary>ACTI — Active, IACT — Closed, matched(will never be reopened), HIBE — Deactivated(can be reopened)</summary>
-	public enum OrderState
+	public enum OrderState 
 	{
 		PENDING,
 		ACTI,

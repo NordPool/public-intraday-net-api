@@ -73,7 +73,7 @@
 				//if(!schemaFile.Name.Contains("TradeRecallRequest"))
 				//	continue;
 				var schema = NJsonSchema.JsonSchema4.FromFileAsync(schemaFile.FullName).Result;
-				var className = GetTypeNameFromFileName(schema);
+				var className = GetTypeNameFromDocumentFilePath(schema);
 				WriteClass(className, schema);
 				
 				string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
@@ -97,9 +97,9 @@
 	public void WriteClass(string typeName, NJsonSchema.JsonSchema4 schema)
 	{
 		if(schema.IsEnumeration)
-			WriteBeginBlock("enum", typeName, schema.Description);
+			WriteBeginBlock("enum", typeName, schema);
 		else
-			WriteBeginBlock("class", typeName, schema.Description);
+			WriteBeginBlock("class", typeName, schema);
 		if(schema.IsEnumeration)
 			WriteEnumValues(schema);
 		else
@@ -107,7 +107,7 @@
 		WriteEndBlock();
 	}
 
-	public void WriteBeginBlock(string blockType, string typeName, string description)
+	public void WriteBeginBlock(string blockType, string typeName, NJsonSchema.JsonSchema4 schema)
 	{
 #>
 /*
@@ -119,17 +119,29 @@
 namespace NPS.ID.PublicApi.Models.v1
 {
 <#+
-		if(!string.IsNullOrEmpty(description))
+		if(!string.IsNullOrEmpty(schema.Description))
         {
 #>
-	/// <summary><#=description#></summary>
+	/// <summary><#=schema.Description#></summary>
 <#+
         }
 #>
-	public <#=blockType#> <#=typeName#>
+	public <#=blockType#> <#=typeName#> <#=GetBaseClassDefinition(schema)#>
 	{
 <#+
 }
+	private static string GetBaseClassDefinition(NJsonSchema.JsonSchema4 schema)
+    {
+		if(schema.ExtensionData == null)
+			return "";
+		var extendsClause = schema.ExtensionData.Where(r=>r.Key == "extends").FirstOrDefault();
+		if(extendsClause.Value == null)
+			return "";
+		var extendsObject = extendsClause.Value as System.Collections.Generic.Dictionary<string, object>;
+		var baseClassName = extendsObject.Where(r=>r.Key == "schemaReferencePath").FirstOrDefault().Value.ToString();
+
+		return " : " + GetTypeNameFromFilePath(baseClassName);
+    }
 	public void WriteMembers(JsonSchema4 schema)
 	{
 		foreach(var property in schema.ActualProperties)
@@ -168,18 +180,21 @@ namespace NPS.ID.PublicApi.Models.v1
 <#+
 	}
 
-	private string GetTypeNameFromFileName(JsonSchema4 schema)
+	private string GetTypeNameFromDocumentFilePath(JsonSchema4 schema)
     {
-		var path = schema.DocumentPath.Replace(@"/",@"\");
-		
+		return GetTypeNameFromFilePath(schema.DocumentPath);
+    }
+
+	private static string GetTypeNameFromFilePath(string filePath)
+    {
+		var path = filePath.Replace(@"/",@"\");
 		return path.Substring(path.LastIndexOf(@"\")+1).Replace(".json", "");
-		
     }
 
 	private string MapSchemaPropertyTypeToCSTypeName(JsonObjectType type, JsonProperty property)
     { 
 		if(property.HasSchemaReference)
-			return GetTypeNameFromFileName(property.SchemaReference);
+			return GetTypeNameFromDocumentFilePath(property.SchemaReference);
 
         switch (type)
         {
@@ -216,7 +231,7 @@ namespace NPS.ID.PublicApi.Models.v1
 	private string FindCollectionItemTypeName(JsonProperty property)
     {
 		if(property.Item.SchemaReference != null)
-			return GetTypeNameFromFileName(property.Item.SchemaReference);
+			return GetTypeNameFromDocumentFilePath(property.Item.SchemaReference);
 		else  
 			return MapSchemaPropertyTypeToCSTypeName(property.Item.Type, property);
 		    //return FindSchemaDefinitionNameByProperties(property.Item.SchemaReference.ActualProperties, schemaDefinitions);

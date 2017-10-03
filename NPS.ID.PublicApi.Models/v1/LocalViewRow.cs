@@ -6,7 +6,7 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public class LocalViewRow
+	public class LocalViewRow  : BaseRow
 	{
 		/// <summary>Basic data for BUY orders</summary>
 		public System.Collections.Generic.List<Order> BuyOrders { get; set; }
@@ -24,9 +24,6 @@ namespace NPS.ID.PublicApi.Models.v1
 
 		/// <summary>FOK — Fill or Kill, IOC — Immediate or Cancel, NON — No specific restriction, AON — All or none</summary>
 		public string OrderExecutionRestriction { get; set; }
-
-		/// <summary>Last modification time (status change) of data</summary>
-		public System.DateTimeOffset UpdatedAt { get; set; }
 
 	}
 }

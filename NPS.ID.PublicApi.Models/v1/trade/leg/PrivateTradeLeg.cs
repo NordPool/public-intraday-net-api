@@ -6,7 +6,7 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public class PrivateTradeLeg
+	public class PrivateTradeLeg 
 	{
 		public string PortfolioId { get; set; }
 

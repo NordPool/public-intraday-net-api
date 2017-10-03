@@ -6,30 +6,10 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public class PublicTradeRow
+	public class PublicTradeRow  : BaseTradeRow
 	{
-		public System.DateTimeOffset UpdatedAt { get; set; }
-
-		/// <summary>Trade ID</summary>
-		public string TradeId { get; set; }
-
-		public System.DateTimeOffset TradeTime { get; set; }
-
-		public TradeState TradeState { get; set; }
-
 		/// <summary>Basic data about orders participated in the trade</summary>
 		public System.Collections.Generic.List<PublicTradeLeg> Legs { get; set; }
-
-		/// <summary>Currency code</summary>
-		public string Currency { get; set; }
-
-		public long EventSequenceNo { get; set; }
-
-		/// <summary>A flag that indicates if this trade should no longer be visible on the market (old trade).</summary>
-		public bool Deleted { get; set; }
-
-		/// <summary>A medium length display name for the contract.</summary>
-		public string MediumDisplayName { get; set; }
 
 	}
 }

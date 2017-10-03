@@ -7,7 +7,7 @@
 namespace NPS.ID.PublicApi.Models.v1
 {
 	/// <summary>Technical field about message originator.</summary>
-	public enum ErrorType
+	public enum ErrorType 
 	{
 		NPM,
 		PRE_TRADE,

@@ -7,7 +7,7 @@
 namespace NPS.ID.PublicApi.Models.v1
 {
 	/// <summary>A contract can be available in many delivery areas, and for each delivery area it can have different opening and closing times. So for each area state, openAt and closeAt times are defined.</summary>
-	public class DeliveryAreaState
+	public class DeliveryAreaState 
 	{
 		public long DlvryAreaId { get; set; }
 

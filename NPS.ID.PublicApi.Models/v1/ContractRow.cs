@@ -6,7 +6,7 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public class ContractRow
+	public class ContractRow  : BaseRow
 	{
 		/// <summary>Unique identifier for a contract</summary>
 		public string ContractId { get; set; }
@@ -46,9 +46,6 @@ namespace NPS.ID.PublicApi.Models.v1
 
 		/// <summary>Id of product that this contract belongs to</summary>
 		public string ProductId { get; set; }
-
-		/// <summary>Last modification time (status change) of data</summary>
-		public System.DateTimeOffset UpdatedAt { get; set; }
 
 	}
 }

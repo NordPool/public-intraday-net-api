@@ -6,37 +6,17 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public class PrivateTradeRow
+	public class PrivateTradeRow  : BaseTradeRow
 	{
+		/// <summary>Basic data about orders participated in the trade</summary>
+		public System.Collections.Generic.List<PrivateTradeLeg> Legs { get; set; }
+
 		public long CancellationFee { get; set; }
 
 		/// <summary>There is a deadline for trade cancellation, in accordance with market rules</summary>
 		public string CancellationDeadLine { get; set; }
 
 		public long RevisionNo { get; set; }
-
-		public System.DateTimeOffset UpdatedAt { get; set; }
-
-		/// <summary>Trade ID</summary>
-		public string TradeId { get; set; }
-
-		public System.DateTimeOffset TradeTime { get; set; }
-
-		public TradeState TradeState { get; set; }
-
-		/// <summary>Basic data about orders participated in the trade</summary>
-		public System.Collections.Generic.List<PrivateTradeLeg> Legs { get; set; }
-
-		/// <summary>Currency code</summary>
-		public string Currency { get; set; }
-
-		public long EventSequenceNo { get; set; }
-
-		/// <summary>A flag that indicates if this trade should no longer be visible on the market (old trade).</summary>
-		public bool Deleted { get; set; }
-
-		/// <summary>A medium length display name for the contract.</summary>
-		public string MediumDisplayName { get; set; }
 
 	}
 }

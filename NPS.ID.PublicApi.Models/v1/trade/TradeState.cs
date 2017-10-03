@@ -7,7 +7,7 @@
 namespace NPS.ID.PublicApi.Models.v1
 {
 	/// <summary>COMPLETED - the trade is completed, CANCELLED - the trade is cancelled.</summary>
-	public enum TradeState
+	public enum TradeState 
 	{
 		COMPLETED,
 		DISPUTED,

@@ -6,7 +6,7 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public class DeliveryAreaRow
+	public class DeliveryAreaRow  : BaseRow
 	{
 		public long DeliveryAreaId { get; set; }
 
@@ -30,9 +30,6 @@ namespace NPS.ID.PublicApi.Models.v1
 
 		/// <summary>If false: update information with the contents received, If true: delete entity indicated in the message</summary>
 		public bool Deleted { get; set; }
-
-		/// <summary>Last modification time (status change) of data</summary>
-		public System.DateTimeOffset UpdatedAt { get; set; }
 
 	}
 }

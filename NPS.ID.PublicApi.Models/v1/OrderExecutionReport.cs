@@ -7,7 +7,7 @@
 namespace NPS.ID.PublicApi.Models.v1
 {
 	/// <summary>In response to an order creation or modification request described in Creating and modifying orders and for any order updates, the Intraday Platform will send an Order Execution Report message.</summary>
-	public class OrderExecutionReport
+	public class OrderExecutionReport  : BaseRow
 	{
 		/// <summary>Unique identifier for this request, provided by the client to track their own requests</summary>
 		public string RequestId { get; set; }
@@ -22,9 +22,6 @@ namespace NPS.ID.PublicApi.Models.v1
 
 		/// <summary>Order execution entries</summary>
 		public System.Collections.Generic.List<OrderExecutionEntry> Orders { get; set; }
-
-		/// <summary>Last modification time (status change) of data</summary>
-		public System.DateTimeOffset UpdatedAt { get; set; }
 
 	}
 }

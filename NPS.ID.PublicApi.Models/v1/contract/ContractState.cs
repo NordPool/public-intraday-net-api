@@ -7,7 +7,7 @@
 namespace NPS.ID.PublicApi.Models.v1
 {
 	/// <summary>ACTI: Active, IACT: Expired(will never be reopened), HIBE: Closed(can be reopened)</summary>
-	public enum ContractState
+	public enum ContractState 
 	{
 		HIBE,
 		IACT,

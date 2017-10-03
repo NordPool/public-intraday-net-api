@@ -7,7 +7,7 @@
 namespace NPS.ID.PublicApi.Models.v1
 {
 	/// <summary>Action</summary>
-	public enum OrderAction
+	public enum OrderAction 
 	{
 		USER_ADDED,
 		USER_HIBERNATED,

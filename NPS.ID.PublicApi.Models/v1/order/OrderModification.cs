@@ -6,7 +6,7 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public class OrderModification
+	public class OrderModification 
 	{
 		public long RevisionNo { get; set; }
 

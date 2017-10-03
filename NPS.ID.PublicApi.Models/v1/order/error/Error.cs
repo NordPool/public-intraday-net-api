@@ -6,7 +6,7 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public class Error
+	public class Error 
 	{
 		public ErrorCode ErrorCode { get; set; }
 

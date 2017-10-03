@@ -6,7 +6,7 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public class OrderExecutionEntry
+	public class OrderExecutionEntry 
 	{
 		public long? EventSequenceNo { get; set; }
 
@@ -41,7 +41,7 @@ namespace NPS.ID.PublicApi.Models.v1
 
 		public OrderSide Side { get; set; }
 
-		public OrderSide OrderType { get; set; }
+		public OrderType OrderType { get; set; }
 
 		public long? UnitPrice { get; set; }
 

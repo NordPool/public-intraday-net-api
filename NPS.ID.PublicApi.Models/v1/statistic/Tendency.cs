@@ -7,7 +7,7 @@
 namespace NPS.ID.PublicApi.Models.v1
 {
 	/// <summary>UP - Last price is higher than a previous price, DOWN - Last price is lower than a previous price, EQUAL - Last price is equal to a previous price</summary>
-	public enum Tendency
+	public enum Tendency 
 	{
 		UP,
 		DOWN,

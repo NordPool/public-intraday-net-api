@@ -6,7 +6,7 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public enum OrderModificationType
+	public enum OrderModificationType 
 	{
 		ACTI,
 		DEAC,

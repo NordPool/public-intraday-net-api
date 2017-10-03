@@ -8,7 +8,7 @@
 namespace NPS.ID.PublicApi.Models.v1
 {
 	/// <summary>Delivery area portfolio</summary>
-	public class DeliveryAreaPortfolio
+	public class DeliveryAreaPortfolio 
 	{
 		public int AreaId { get; set; }
 

@@ -7,7 +7,7 @@
 namespace NPS.ID.PublicApi.Models.v1
 {
 	/// <summary>LIMIT, ICEBERG, USER_DEFINED_BLOCK</summary>
-	public enum OrderType
+	public enum OrderType 
 	{
 		LIMIT,
 		ICEBERG,

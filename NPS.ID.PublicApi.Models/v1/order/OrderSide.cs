@@ -7,7 +7,7 @@
 namespace NPS.ID.PublicApi.Models.v1
 {
 	/// <summary>BUY/SELL</summary>
-	public enum OrderSide
+	public enum OrderSide 
 	{
 		BUY,
 		SELL,

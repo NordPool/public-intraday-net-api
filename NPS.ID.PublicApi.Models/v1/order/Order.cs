@@ -6,7 +6,7 @@
 
 namespace NPS.ID.PublicApi.Models.v1
 {
-	public class Order
+	public class Order 
 	{
 		public string OrderId { get; set; }
 
