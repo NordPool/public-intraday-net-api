@@ -1,1 +1,0 @@
-﻿NPS.ID.PublicApi.ModelUtils.exe "C:\NordPool\public-intraday-api-jsonschema\v1" "C:\NordPool\public-intraday-net-api\NPS.ID.PublicApi.Models"
