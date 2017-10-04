@@ -4,29 +4,30 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-using  Nordpool.ID.PublicApi.v1.Statistic;
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Statistic
 {
 	/// <summary>Provides a list of contracts available in the area with id <deliveryAreaId> and aggregated statistical data for each contract.</summary>
 	public class PublicStatisticRow  : BaseStatisticRow
 	{
-		public long? LastPrice { get; set; }
+		public long LastPrice { get; set; }
 
-		public long? LastQuantity { get; set; }
+		public long LastQuantity { get; set; }
 
 		/// <summary>Time of the last trade</summary>
-		public System.DateTimeOffset LastTradeTime { get; set; }
+		public DateTimeOffset LastTradeTime { get; set; }
 
-		public long? HighestPrice { get; set; }
+		public long HighestPrice { get; set; }
 
-		public long? LowestPrice { get; set; }
+		public long LowestPrice { get; set; }
 
-		public long? Vwap { get; set; }
+		public long Vwap { get; set; }
 
-		public long? Turnover { get; set; }
+		public long Turnover { get; set; }
 
-		public long? DayAheadPrice { get; set; }
+		public long DayAheadPrice { get; set; }
 
 		public Nordpool.ID.PublicApi.v1.Statistic.Tendency Tendency { get; set; }
 

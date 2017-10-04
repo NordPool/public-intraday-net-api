@@ -114,16 +114,16 @@
 			nameSpaceSuffix = "." + ApplyCamelCasing(nameSpaceSuffix);
 
 		var usings = new List<string>();
-		foreach(var property in schema.ActualProperties)
-        {
-			if(property.Value.HasSchemaReference) {
-				usings.Add(ApplyCamelCasing(GetNameSpaceSuffix(property.Value.SchemaReference)));
-            }
-			if(property.Value.Type == NJsonSchema.JsonObjectType.Array) {
-				if(property.Value.Item != null)
-					usings.Add(ApplyCamelCasing(GetNameSpaceSuffix(property.Value.Item.SchemaReference)));
-            }
-        }
+		//foreach(var property in schema.ActualProperties)
+        //{
+		//	if(property.Value.HasSchemaReference) {
+		//		usings.Add(ApplyCamelCasing(GetNameSpaceSuffix(property.Value.SchemaReference)));
+        //    }
+		//	if(property.Value.Type == NJsonSchema.JsonObjectType.Array) {
+		//		if(property.Value.Item != null && property.Value.Item.HasSchemaReference)
+		//			usings.Add(ApplyCamelCasing(GetNameSpaceSuffix(property.Value.Item.SchemaReference)));
+        //    }
+        //}
 
 #>
 /*
@@ -132,6 +132,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
+using System;
+using System.Collections.Generic;
 <#+
 		foreach(var usingClause in usings.Distinct())
         {
@@ -178,20 +180,29 @@ namespace Nordpool.ID.PublicApi.v1<#=nameSpaceSuffix#>
 
 	private static string GetNameSpaceSuffix(NJsonSchema.JsonSchema4 schema)
     {
-		if(schema.ExtensionData == null)
-			return "";
-		var extendsClause = schema.ExtensionData.Where(r=>r.Key == "javaType").FirstOrDefault();
+        try 
+        {	        
+			if(schema == null)
+				throw new Exception("Invalid call for GetNameSpaceSuffix - null schema");
+			if(schema.ExtensionData == null)
+				return "";
+			var extendsClause = schema.ExtensionData.Where(r=>r.Key == "javaType").FirstOrDefault();
 
-		var suffix = "";
-		if(extendsClause.Value == null)
-			return "";
-		else
-			suffix =  extendsClause.Value.ToString();
-		suffix = suffix.Replace("com.nordpool.id.publicapi.v1.", "");
-		var typeName = GetTypeNameFromDocumentFilePath(schema, false);
-		suffix = suffix.Replace(typeName, "");
+			var suffix = "";
+			if(extendsClause.Value == null)
+				return "";
+			else
+				suffix =  extendsClause.Value.ToString();
+			suffix = suffix.Replace("com.nordpool.id.publicapi.v1.", "");
+			var typeName = GetTypeNameFromDocumentFilePath(schema, false);
+			suffix = suffix.Replace(typeName, "");
 
-		return suffix.Trim('.');
+			return suffix.Trim('.');
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error when resolving namespace-suffix", ex);
+        }
 
     }
 
@@ -302,14 +313,16 @@ namespace Nordpool.ID.PublicApi.v1<#=nameSpaceSuffix#>
 			case JsonObjectType.String:
 			case JsonObjectType.Null | JsonObjectType.String:
 				if(property.Format == "date-time")
-					return "System.DateTimeOffset";
+					return "DateTimeOffset";
 				else if(property.IsEnumeration)
 					return ApplyCamelCasing(property.Name);
+				else if(property.Format == "uuid")
+					return "Guid";
 				else 
 					return "string";
 			case NJsonSchema.JsonObjectType.Array | NJsonSchema.JsonObjectType.Null:
 			case NJsonSchema.JsonObjectType.Array :
-				return "System.Collections.Generic.List<" + FindCollectionItemTypeName(property, true) + ">";
+				return "List<" + FindCollectionItemTypeName(property, true) + ">";
 			default :
 				return "object";
         }

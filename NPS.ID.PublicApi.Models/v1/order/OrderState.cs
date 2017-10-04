@@ -4,10 +4,12 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Order
 {
-	/// <summary>ACTI — Active, IACT — Closed, matched(will never be reopened), HIBE — Deactivated(can be reopened)</summary>
+	/// <summary>ACTI - Active, IACT - Closed, matched(will never be reopened), HIBE - Deactivated(can be reopened)</summary>
 	public enum OrderState 
 	{
 		PENDING,

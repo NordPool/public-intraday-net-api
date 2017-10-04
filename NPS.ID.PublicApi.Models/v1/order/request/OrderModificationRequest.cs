@@ -4,7 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-using  Nordpool.ID.PublicApi.v1.Order;
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Order.Request
 {
@@ -17,7 +18,7 @@ namespace Nordpool.ID.PublicApi.v1.Order.Request
 
 		public string UserId { get; set; }
 
-		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Order.OrderModification> Orders { get; set; }
+		public List<Nordpool.ID.PublicApi.v1.Order.OrderModification> Orders { get; set; }
 
 	}
 }

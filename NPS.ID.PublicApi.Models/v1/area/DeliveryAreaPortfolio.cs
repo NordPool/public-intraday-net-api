@@ -5,17 +5,19 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Area
 {
 	/// <summary>Delivery area portfolio</summary>
 	public class DeliveryAreaPortfolio 
 	{
-		public int AreaId { get; set; }
+		public long AreaId { get; set; }
 
-		public System.DateTimeOffset ValidFrom { get; set; }
+		public DateTimeOffset ValidFrom { get; set; }
 
-		public System.DateTimeOffset ValidTo { get; set; }
+		public DateTimeOffset ValidTo { get; set; }
 
 	}
 }

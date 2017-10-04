@@ -4,7 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-using  Nordpool.ID.PublicApi.v1.Order.Error;
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1
 {
@@ -20,10 +21,10 @@ namespace Nordpool.ID.PublicApi.v1
 		public Nordpool.ID.PublicApi.v1.Order.Error.ErrorType ErrorType { get; set; }
 
 		/// <summary>An array of objects that contain fields errorCode and errorMessage.</summary>
-		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Order.Error.Error> Errors { get; set; }
+		public List<Nordpool.ID.PublicApi.v1.Order.Error.Error> Errors { get; set; }
 
 		/// <summary>Order execution entries</summary>
-		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Order.OrderExecutionEntry> Orders { get; set; }
+		public List<Nordpool.ID.PublicApi.v1.Order.OrderExecutionEntry> Orders { get; set; }
 
 	}
 }

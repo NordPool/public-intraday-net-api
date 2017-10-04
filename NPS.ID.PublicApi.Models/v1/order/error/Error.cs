@@ -4,7 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-using  Nordpool.ID.PublicApi.v1.Order.Error;
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Order.Error
 {

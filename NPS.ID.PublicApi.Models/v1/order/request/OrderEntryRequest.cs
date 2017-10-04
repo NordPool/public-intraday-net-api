@@ -4,6 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Order.Request
 {
@@ -16,7 +18,7 @@ namespace Nordpool.ID.PublicApi.v1.Order.Request
 		public bool RejectPartially { get; set; }
 
 		/// <summary>List of orders</summary>
-		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Order.OrderEntry> Orders { get; set; }
+		public List<Nordpool.ID.PublicApi.v1.Order.OrderEntry> Orders { get; set; }
 
 	}
 }

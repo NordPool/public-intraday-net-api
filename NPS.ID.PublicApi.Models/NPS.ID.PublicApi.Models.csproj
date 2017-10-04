@@ -63,6 +63,7 @@
     <Compile Include="v1\base\BaseRow.cs" />
     <Compile Include="v1\base\BaseTradeRow.cs" />
     <Compile Include="v1\CapacityRow.cs" />
+    <Compile Include="v1\command\Command.cs" />
     <Compile Include="v1\command\CommandType.cs" />
     <Compile Include="v1\command\TokenRefreshCommand.cs" />
     <Compile Include="v1\ConfigurationRow.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="v1\statistic\BaseStatisticRow.cs" />
     <Compile Include="v1\statistic\PublicStatisticRow.cs" />
     <Compile Include="v1\statistic\Tendency.cs" />
+    <Compile Include="v1\trade\leg\BaseTradeLeg.cs" />
     <Compile Include="v1\trade\leg\LegOwnerShip.cs" />
     <Compile Include="v1\trade\leg\LegOwnershipEnum.cs" />
     <Compile Include="v1\trade\leg\PrivateTradeLeg.cs" />

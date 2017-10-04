@@ -4,7 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-using  Nordpool.ID.PublicApi.v1.Order;
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Order
 {
@@ -12,13 +13,14 @@ namespace Nordpool.ID.PublicApi.v1.Order
 	{
 		public long RevisionNo { get; set; }
 
-		public string ClientOrderId { get; set; }
+		/// <summary>UUID for the order, provided by the client to track their own orders</summary>
+		public Guid ClientOrderId { get; set; }
 
 		public string OrderId { get; set; }
 
 		public string PortfolioId { get; set; }
 
-		public System.Collections.Generic.List<string> ContractIds { get; set; }
+		public List<string> ContractIds { get; set; }
 
 		public Nordpool.ID.PublicApi.v1.Order.OrderType OrderType { get; set; }
 
@@ -30,7 +32,7 @@ namespace Nordpool.ID.PublicApi.v1.Order
 
 		public Nordpool.ID.PublicApi.v1.Order.ExecutionRestriction ExecutionRestriction { get; set; }
 
-		public System.DateTimeOffset ExpireTime { get; set; }
+		public DateTimeOffset ExpireTime { get; set; }
 
 		public string Text { get; set; }
 

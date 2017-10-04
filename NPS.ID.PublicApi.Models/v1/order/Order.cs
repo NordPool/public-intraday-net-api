@@ -4,6 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Order
 {
@@ -12,6 +14,9 @@ namespace Nordpool.ID.PublicApi.v1.Order
 		public string OrderId { get; set; }
 
 		public long DeliveryAreaId { get; set; }
+
+		/// <summary>The portfolio id of the current order</summary>
+		public string PortfolioId { get; set; }
 
 		public long Price { get; set; }
 

@@ -7,20 +7,12 @@
 using System;
 using System.Collections.Generic;
 
-namespace Nordpool.ID.PublicApi.v1.Order
+namespace Nordpool.ID.PublicApi.v1.Command
 {
-	/// <summary>Action</summary>
-	public enum OrderAction 
+	/// <summary>Command to send via Websocket</summary>
+	public class Command 
 	{
-		USER_ADDED,
-		USER_HIBERNATED,
-		USER_MODIFIED,
-		USER_DELETED,
-		SYSTEM_HIBERNATED,
-		SYSTEM_MODIFIED,
-		SYSTEM_DELETED,
-		PARTIAL_EXECUTION,
-		FULL_EXECUTION,
-		ICEBERG_SLICE_ADDED,
+		public Nordpool.ID.PublicApi.v1.Command.CommandType Type { get; set; }
+
 	}
 }

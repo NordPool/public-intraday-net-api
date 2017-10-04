@@ -4,6 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Order.Error
 {
@@ -16,5 +18,7 @@ namespace Nordpool.ID.PublicApi.v1.Order.Error
 		ITEM_NOT_FOUND,
 		ACCESS_MODE_VIOLATION,
 		THIRD_PARTY,
+		INVALID_AREA,
+		PARSING_ERROR,
 	}
 }

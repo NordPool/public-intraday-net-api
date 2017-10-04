@@ -4,17 +4,21 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1
 {
 	/// <summary>Configuration row. See documentation from: https://developers.nordpoolgroup.com/docs/configuration</summary>
 	public class ConfigurationRow 
 	{
+		public string UserUUID { get; set; }
+
 		/// <summary>An array of throttling limits</summary>
-		public System.Collections.Generic.List<long> ThrottlingLimit { get; set; }
+		public List<long> ThrottlingLimit { get; set; }
 
 		/// <summary>An array of portfolios which are accessible for the logged in user.</summary>
-		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Portfolio.Portfolio> Portfolios { get; set; }
+		public List<Nordpool.ID.PublicApi.v1.Portfolio.Portfolio> Portfolios { get; set; }
 
 	}
 }

@@ -4,6 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Heartbeat
 {
@@ -12,7 +14,7 @@ namespace Nordpool.ID.PublicApi.v1.Heartbeat
 	{
 		public long Timestamp { get; set; }
 
-		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Heartbeat.HeartbeatItem> HeartBeats { get; set; }
+		public List<Nordpool.ID.PublicApi.v1.Heartbeat.HeartbeatItem> Heartbeat { get; set; }
 
 	}
 }

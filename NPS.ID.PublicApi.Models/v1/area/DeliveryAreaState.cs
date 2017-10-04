@@ -4,7 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-using  Nordpool.ID.PublicApi.v1.Contract;
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Area
 {
@@ -15,9 +16,9 @@ namespace Nordpool.ID.PublicApi.v1.Area
 
 		public Nordpool.ID.PublicApi.v1.Contract.ContractState State { get; set; }
 
-		public System.DateTimeOffset OpenAt { get; set; }
+		public DateTimeOffset OpenAt { get; set; }
 
-		public System.DateTimeOffset ClosedAt { get; set; }
+		public DateTimeOffset ClosedAt { get; set; }
 
 	}
 }

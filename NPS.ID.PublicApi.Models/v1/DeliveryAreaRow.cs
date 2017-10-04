@@ -4,6 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1
 {
@@ -27,7 +29,7 @@ namespace Nordpool.ID.PublicApi.v1
 		public string CountryIsoCode { get; set; }
 
 		/// <summary>Product types available in the area</summary>
-		public System.Collections.Generic.List<string> ProductTypes { get; set; }
+		public List<string> ProductTypes { get; set; }
 
 		/// <summary>If false: update information with the contents received, If true: delete entity indicated in the message</summary>
 		public bool Deleted { get; set; }

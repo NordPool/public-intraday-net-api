@@ -4,6 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Base
 {
@@ -11,7 +13,7 @@ namespace Nordpool.ID.PublicApi.v1.Base
 	public class BaseRow 
 	{
 		/// <summary>Last modification time (status change) of data</summary>
-		public System.DateTimeOffset UpdatedAt { get; set; }
+		public DateTimeOffset UpdatedAt { get; set; }
 
 	}
 }

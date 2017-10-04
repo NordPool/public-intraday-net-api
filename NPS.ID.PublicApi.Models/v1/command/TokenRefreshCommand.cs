@@ -4,9 +4,10 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-using  Nordpool.ID.PublicApi.v1.Command;
+using System;
+using System.Collections.Generic;
 
-namespace Nordpool.ID.PublicApi.v1
+namespace Nordpool.ID.PublicApi.v1.Command
 {
 	public class TokenRefreshCommand 
 	{

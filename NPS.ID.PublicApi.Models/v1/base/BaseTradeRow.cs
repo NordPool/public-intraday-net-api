@@ -4,7 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-using  Nordpool.ID.PublicApi.v1.Trade;
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Base
 {
@@ -14,7 +15,7 @@ namespace Nordpool.ID.PublicApi.v1.Base
 		/// <summary>Trade ID</summary>
 		public string TradeId { get; set; }
 
-		public System.DateTimeOffset TradeTime { get; set; }
+		public DateTimeOffset TradeTime { get; set; }
 
 		public Nordpool.ID.PublicApi.v1.Trade.TradeState TradeState { get; set; }
 

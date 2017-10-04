@@ -4,18 +4,20 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1
 {
 	/// <summary>Capacity information between areas</summary>
 	public class CapacityRow  : Base.BaseRow
 	{
-		public int EventSequenceNo { get; set; }
+		public long EventSequenceNo { get; set; }
 
 		/// <summary>true - capacity data produced by internal Nord Pool Matcher. false - capacity data came</summary>
 		public bool Internal { get; set; }
 
-		public System.DateTimeOffset PublicationTime { get; set; }
+		public DateTimeOffset PublicationTime { get; set; }
 
 		public long DeliveryAreaFrom { get; set; }
 
@@ -25,9 +27,9 @@ namespace Nordpool.ID.PublicApi.v1
 
 		public long DeliveryEnd { get; set; }
 
-		public int InCapacity { get; set; }
+		public long InCapacity { get; set; }
 
-		public int OutCapacity { get; set; }
+		public long OutCapacity { get; set; }
 
 	}
 }

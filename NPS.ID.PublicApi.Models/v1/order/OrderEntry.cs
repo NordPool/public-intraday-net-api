@@ -4,25 +4,25 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-using  Nordpool.ID.PublicApi.v1.Order;
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Order
 {
 	public class OrderEntry 
 	{
+		/// <summary>UUID for the order, provided by the client to track their own orders</summary>
+		public Guid ClientOrderId { get; set; }
+
 		/// <summary>The portfolio id of the current order</summary>
 		public string PortfolioId { get; set; }
 
 		/// <summary>The contract ids that the current order should be placed on. For limit orders, only one value is allowed, for custom block orders all the contracts that the block spans should be included</summary>
-		public System.Collections.Generic.List<string> ContractIds { get; set; }
+		public List<string> ContractIds { get; set; }
 
 		public long DeliveryAreaId { get; set; }
 
 		public Nordpool.ID.PublicApi.v1.Order.OrderSide Side { get; set; }
-
-		public long? ClipSize { get; set; }
-
-		public long? ClipPriceChange { get; set; }
 
 		public Nordpool.ID.PublicApi.v1.Order.OrderType OrderType { get; set; }
 
@@ -34,12 +34,15 @@ namespace Nordpool.ID.PublicApi.v1.Order
 
 		public Nordpool.ID.PublicApi.v1.Order.ExecutionRestriction ExecutionRestriction { get; set; }
 
-		public System.DateTimeOffset ExpireTime { get; set; }
+		public DateTimeOffset ExpireTime { get; set; }
+
+		public string Text { get; set; }
 
 		public Nordpool.ID.PublicApi.v1.Order.OrderState State { get; set; }
 
-		/// <summary>UUID for the order, provided by the client to track their own orders</summary>
-		public string ClientOrderId { get; set; }
+		public long ClipSize { get; set; }
+
+		public long ClipPriceChange { get; set; }
 
 	}
 }

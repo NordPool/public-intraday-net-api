@@ -4,8 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-using  Nordpool.ID.PublicApi.v1.Contract;
-using  Nordpool.ID.PublicApi.v1.Area;
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1
 {
@@ -29,12 +29,12 @@ namespace Nordpool.ID.PublicApi.v1
 		/// <summary>If false: update information with the contents received, If true: delete entity indicated in the message.</summary>
 		public bool Deleted { get; set; }
 
-		public System.DateTimeOffset DlvryStart { get; set; }
+		public DateTimeOffset DlvryStart { get; set; }
 
-		public System.DateTimeOffset DlvryEnd { get; set; }
+		public DateTimeOffset DlvryEnd { get; set; }
 
 		/// <summary>A contract can be available in many delivery areas, and for each delivery area it can have different opening and closing times. So for each area state, openAt and closeAt times are defined.</summary>
-		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Area.DeliveryAreaState> DlvryAreaState { get; set; }
+		public List<Nordpool.ID.PublicApi.v1.Area.DeliveryAreaState> DlvryAreaState { get; set; }
 
 		/// <summary>Id of the market that this contract belongs to, for example a code for XBID market.</summary>
 		public string MarketId { get; set; }

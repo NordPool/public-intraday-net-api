@@ -4,22 +4,21 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1
 {
 	public class LocalViewRow  : Base.BaseRow
 	{
 		/// <summary>Basic data for BUY orders</summary>
-		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Order.Order> BuyOrders { get; set; }
+		public List<Nordpool.ID.PublicApi.v1.Order.Order> BuyOrders { get; set; }
 
 		/// <summary>Basic data for SELL orders</summary>
-		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Order.Order> SellOrders { get; set; }
+		public List<Nordpool.ID.PublicApi.v1.Order.Order> SellOrders { get; set; }
 
 		/// <summary>ID of the contract that this order belongs to</summary>
 		public string ContractId { get; set; }
-
-		/// <summary>The timestamp at which this order was received by the system</summary>
-		public System.DateTimeOffset CreatedAt { get; set; }
 
 		public long DeliveryAreaId { get; set; }
 

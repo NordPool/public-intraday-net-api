@@ -4,6 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Contract
 {
@@ -13,5 +15,6 @@ namespace Nordpool.ID.PublicApi.v1.Contract
 		HIBE,
 		IACT,
 		ACTI,
+		FRZN,
 	}
 }

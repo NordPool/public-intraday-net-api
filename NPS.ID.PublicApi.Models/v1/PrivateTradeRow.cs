@@ -4,14 +4,15 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-using  Nordpool.ID.PublicApi.v1.Trade.Leg;
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1
 {
 	public class PrivateTradeRow  : Base.BaseTradeRow
 	{
 		/// <summary>Basic data about orders participated in the trade</summary>
-		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Trade.Leg.PrivateTradeLeg> Legs { get; set; }
+		public List<Nordpool.ID.PublicApi.v1.Trade.Leg.PrivateTradeLeg> Legs { get; set; }
 
 		public long CancellationFee { get; set; }
 

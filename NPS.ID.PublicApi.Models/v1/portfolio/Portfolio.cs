@@ -4,8 +4,8 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-using  Nordpool.ID.PublicApi.v1.Portfolio;
-using  Nordpool.ID.PublicApi.v1.Contract;
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Portfolio
 {
@@ -25,9 +25,9 @@ namespace Nordpool.ID.PublicApi.v1.Portfolio
 
 		public Nordpool.ID.PublicApi.v1.Portfolio.PortfolioPermission Permission { get; set; }
 
-		public System.DateTimeOffset ValidFrom { get; set; }
+		public DateTimeOffset ValidFrom { get; set; }
 
-		public System.DateTimeOffset ValidTo { get; set; }
+		public DateTimeOffset ValidTo { get; set; }
 
 		/// <summary>If false: update information with the contents received. If true: delete entity indicated in the message</summary>
 		public bool Deleted { get; set; }
@@ -38,10 +38,10 @@ namespace Nordpool.ID.PublicApi.v1.Portfolio
 		public string Currency { get; set; }
 
 		/// <summary>List of areas in which the portfolio is valid</summary>
-		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Area.DeliveryAreaPortfolio> Areas { get; set; }
+		public List<Nordpool.ID.PublicApi.v1.Area.DeliveryAreaPortfolio> Areas { get; set; }
 
 		/// <summary>List of markets where given portfolio can trade</summary>
-		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Market.MarketPortfolio> Markets { get; set; }
+		public List<Nordpool.ID.PublicApi.v1.Market.MarketPortfolio> Markets { get; set; }
 
 	}
 }

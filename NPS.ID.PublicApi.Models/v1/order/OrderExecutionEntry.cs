@@ -4,13 +4,14 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-using  Nordpool.ID.PublicApi.v1.Order;
+using System;
+using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Order
 {
 	public class OrderExecutionEntry 
 	{
-		public long? EventSequenceNo { get; set; }
+		public long EventSequenceNo { get; set; }
 
 		public string MarketId { get; set; }
 
@@ -20,7 +21,7 @@ namespace Nordpool.ID.PublicApi.v1.Order
 
 		public string OrderId { get; set; }
 
-		public long? RevisionNo { get; set; }
+		public long RevisionNo { get; set; }
 
 		/// <summary>Id of the previous order in this modification chain. When an order is modified and its priority changes, or partially matched, a new order Id is assigned.</summary>
 		public string PreviousOrderId { get; set; }
@@ -28,31 +29,33 @@ namespace Nordpool.ID.PublicApi.v1.Order
 		/// <summary>The original order id in this modification chain.</summary>
 		public string OriginalOrderId { get; set; }
 
-		public System.DateTimeOffset UpdatedAt { get; set; }
+		public DateTimeOffset CreatedAt { get; set; }
+
+		public DateTimeOffset UpdatedAt { get; set; }
 
 		/// <summary>UUID for the order, provided by the client to track their own orders</summary>
-		public string ClientOrderId { get; set; }
+		public Guid ClientOrderId { get; set; }
 
 		/// <summary>The portfolio id of the current order</summary>
 		public string PortfolioId { get; set; }
 
 		/// <summary>The contract ids for current order</summary>
-		public System.Collections.Generic.List<string> ContractIds { get; set; }
+		public List<string> ContractIds { get; set; }
 
-		public long? DeliveryAreaId { get; set; }
+		public long DeliveryAreaId { get; set; }
 
 		public Nordpool.ID.PublicApi.v1.Order.OrderSide Side { get; set; }
 
 		public Nordpool.ID.PublicApi.v1.Order.OrderType OrderType { get; set; }
 
-		public long? UnitPrice { get; set; }
+		public long UnitPrice { get; set; }
 
-		public long? Quantity { get; set; }
+		public long Quantity { get; set; }
 
 		public Nordpool.ID.PublicApi.v1.Order.TimeInForce TimeInForce { get; set; }
 
 		/// <summary>If timeInForce is set to GTD (Good Till Date), the expireTime will determine when the order expires</summary>
-		public System.DateTimeOffset ExpireTime { get; set; }
+		public DateTimeOffset ExpireTime { get; set; }
 
 		public string Text { get; set; }
 
@@ -60,13 +63,13 @@ namespace Nordpool.ID.PublicApi.v1.Order
 
 		public Nordpool.ID.PublicApi.v1.Order.OrderAction Action { get; set; }
 
-		public long? ClipSize { get; set; }
+		public long ClipSize { get; set; }
 
-		public long? ClipPriceChange { get; set; }
+		public long ClipPriceChange { get; set; }
 
-		public long? RemainingQuantity { get; set; }
+		public long RemainingQuantity { get; set; }
 
-		public System.Collections.Generic.List<Nordpool.ID.PublicApi.v1.Order.Error.Error> Errors { get; set; }
+		public List<Nordpool.ID.PublicApi.v1.Order.Error.Error> Errors { get; set; }
 
 	}
 }
