@@ -45,55 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="v1\area\DeliveryAreaPortfolio.cs" />
-    <Compile Include="v1\area\DeliveryAreaState.cs" />
-    <Compile Include="v1\base\BaseRow.cs" />
-    <Compile Include="v1\base\BaseTradeRow.cs" />
-    <Compile Include="v1\CapacityRow.cs" />
-    <Compile Include="v1\command\Command.cs" />
-    <Compile Include="v1\command\CommandType.cs" />
-    <Compile Include="v1\command\TokenRefreshCommand.cs" />
-    <Compile Include="v1\ConfigurationRow.cs" />
-    <Compile Include="v1\ContractRow.cs" />
-    <Compile Include="v1\contract\ContractState.cs" />
-    <Compile Include="v1\contract\ProductType.cs" />
-    <Compile Include="v1\DeliveryAreaRow.cs" />
-    <Compile Include="v1\heartbeat\HeartBeatItem.cs" />
-    <Compile Include="v1\heartbeat\HeartbeatMessage.cs" />
-    <Compile Include="v1\LocalViewRow.cs" />
-    <Compile Include="v1\market\MarketPortfolio.cs" />
-    <Compile Include="v1\OrderExecutionReport.cs" />
-    <Compile Include="v1\order\error\Error.cs" />
-    <Compile Include="v1\order\error\ErrorCode.cs" />
-    <Compile Include="v1\order\error\ErrorType.cs" />
-    <Compile Include="v1\order\ExecutionRestriction.cs" />
-    <Compile Include="v1\order\Order.cs" />
-    <Compile Include="v1\order\OrderAction.cs" />
-    <Compile Include="v1\order\OrderEntry.cs" />
-    <Compile Include="v1\order\OrderExecutionEntry.cs" />
-    <Compile Include="v1\order\OrderModification.cs" />
-    <Compile Include="v1\order\OrderModificationType.cs" />
-    <Compile Include="v1\order\OrderSide.cs" />
-    <Compile Include="v1\order\OrderState.cs" />
-    <Compile Include="v1\order\OrderType.cs" />
-    <Compile Include="v1\order\request\OrderEntryRequest.cs" />
-    <Compile Include="v1\order\request\OrderModificationRequest.cs" />
-    <Compile Include="v1\order\TimeInForce.cs" />
-    <Compile Include="v1\portfolio\Portfolio.cs" />
-    <Compile Include="v1\portfolio\PortfolioPermission.cs" />
-    <Compile Include="v1\PrivateTradeRow.cs" />
-    <Compile Include="v1\PublicTradeRow.cs" />
-    <Compile Include="v1\statistic\BaseStatisticRow.cs" />
-    <Compile Include="v1\statistic\PublicStatisticRow.cs" />
-    <Compile Include="v1\statistic\Tendency.cs" />
-    <Compile Include="v1\trade\leg\BaseTradeLeg.cs" />
-    <Compile Include="v1\trade\leg\LegOwnerShip.cs" />
-    <Compile Include="v1\trade\leg\LegOwnershipEnum.cs" />
-    <Compile Include="v1\trade\leg\PrivateTradeLeg.cs" />
-    <Compile Include="v1\trade\leg\PublicTradeLeg.cs" />
-    <Compile Include="v1\trade\request\TradeRecallRequest.cs" />
-    <Compile Include="v1\trade\TradeState.cs" />
-  </ItemGroup>
+    <Compile Include="v1\**\*.cs" />
+    </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
       <SubType>Designer</SubType>
