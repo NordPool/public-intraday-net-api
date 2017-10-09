@@ -71,5 +71,7 @@ namespace Nordpool.ID.PublicApi.v1.Order
 
 		public List<Nordpool.ID.PublicApi.v1.Order.Error.Error> Errors { get; set; }
 
+		public Nordpool.ID.PublicApi.v1.Order.ExecutionRestriction ExecutionRestriction { get; set; }
+
 	}
 }

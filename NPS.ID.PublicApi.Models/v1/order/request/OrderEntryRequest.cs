@@ -17,6 +17,9 @@ namespace Nordpool.ID.PublicApi.v1.Order.Request
 		/// <summary>Should the message be completely rejected if only some of the entered orders cause errors.</summary>
 		public bool RejectPartially { get; set; }
 
+		/// <summary>Member ID</summary>
+		public string MemberId { get; set; }
+
 		/// <summary>List of orders</summary>
 		public List<Nordpool.ID.PublicApi.v1.Order.OrderEntry> Orders { get; set; }
 

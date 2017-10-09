@@ -22,5 +22,16 @@ namespace Nordpool.ID.PublicApi.v1.Order
 
 		public long Qty { get; set; }
 
+		/// <summary>Last modification time (status change) of data</summary>
+		public DateTimeOffset CreatedAt { get; set; }
+
+		/// <summary>Last modification time (status change) of data</summary>
+		public DateTimeOffset UpdatedAt { get; set; }
+
+		/// <summary>If false: update information with the contents received, If true: delete entity indicated in the message</summary>
+		public bool Deleted { get; set; }
+
+		public Nordpool.ID.PublicApi.v1.Order.OrderOwnershipEnum Ownership { get; set; }
+
 	}
 }

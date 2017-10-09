@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("NPS.ID.PublicApi.Models")]
-[assembly: AssemblyDescription("NPS Intraday API data model classes")]
+[assembly: AssemblyDescription("NPS Intraday API dto classes")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Nordpool Group")]
 [assembly: AssemblyProduct("NPS.ID.PublicApi.Models")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]

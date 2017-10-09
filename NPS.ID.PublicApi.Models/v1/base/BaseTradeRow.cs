@@ -17,10 +17,9 @@ namespace Nordpool.ID.PublicApi.v1.Base
 
 		public DateTimeOffset TradeTime { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Trade.TradeState TradeState { get; set; }
+		public Nordpool.ID.PublicApi.v1.Trade.TradeState State { get; set; }
 
-		/// <summary>Currency code</summary>
-		public string Currency { get; set; }
+		public Nordpool.ID.PublicApi.v1.Trade.Currency Currency { get; set; }
 
 		public long EventSequenceNo { get; set; }
 
