@@ -20,5 +20,6 @@ namespace Nordpool.ID.PublicApi.v1.Order.Error
 		THIRD_PARTY,
 		INVALID_AREA,
 		PARSING_ERROR,
+		REUQEST_OVER_THROTTLING,
 	}
 }

@@ -13,5 +13,6 @@ namespace Nordpool.ID.PublicApi.v1.Trade
 	public enum Currency 
 	{
 		EUR,
+		GBP,
 	}
 }

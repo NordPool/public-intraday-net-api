@@ -25,5 +25,7 @@ namespace Nordpool.ID.PublicApi.v1.Trade.Leg
 		/// <summary>true if leg is the aggressor, null if the information is unavailable (for XBID trades)</summary>
 		public bool Aggressor { get; set; }
 
+		public string TenantId { get; set; }
+
 	}
 }
