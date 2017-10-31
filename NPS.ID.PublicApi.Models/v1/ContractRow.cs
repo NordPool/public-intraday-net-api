@@ -17,8 +17,6 @@ namespace Nordpool.ID.PublicApi.v1
 		/// <summary>A more user friendly name for the contract (PH,QH,HH... etc)</summary>
 		public string ContractName { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Contract.ContractState State { get; set; }
-
 		public long DurationSeconds { get; set; }
 
 		public long ResolutionSeconds { get; set; }
