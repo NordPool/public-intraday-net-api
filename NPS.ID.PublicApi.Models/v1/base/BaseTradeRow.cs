@@ -29,5 +29,8 @@ namespace Nordpool.ID.PublicApi.v1.Base
 		/// <summary>A medium length display name for the contract.</summary>
 		public string MediumDisplayName { get; set; }
 
+		/// <summary>Trade was made within the same company.</summary>
+		public bool CompanyTrade { get; set; }
+
 	}
 }

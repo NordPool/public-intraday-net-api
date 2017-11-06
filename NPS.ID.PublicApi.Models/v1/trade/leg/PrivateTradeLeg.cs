@@ -31,5 +31,7 @@ namespace Nordpool.ID.PublicApi.v1.Trade.Leg
 
 		public Nordpool.ID.PublicApi.v1.Order.TimeInForce TimeInForce { get; set; }
 
+		public string ClientOrderId { get; set; }
+
 	}
 }
