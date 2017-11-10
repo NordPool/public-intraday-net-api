@@ -22,15 +22,15 @@ namespace Nordpool.ID.PublicApi.v1.Order
 
 		public List<string> ContractIds { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.OrderType OrderType { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderType? OrderType { get; set; }
 
 		public long UnitPrice { get; set; }
 
 		public long Quantity { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.TimeInForce TimeInForce { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.TimeInForce? TimeInForce { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.ExecutionRestriction ExecutionRestriction { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.ExecutionRestriction? ExecutionRestriction { get; set; }
 
 		public DateTimeOffset ExpireTime { get; set; }
 

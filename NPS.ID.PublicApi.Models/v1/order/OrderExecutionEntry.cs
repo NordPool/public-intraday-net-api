@@ -44,24 +44,24 @@ namespace Nordpool.ID.PublicApi.v1.Order
 
 		public long DeliveryAreaId { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.OrderSide Side { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderSide? Side { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.OrderType OrderType { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderType? OrderType { get; set; }
 
 		public long UnitPrice { get; set; }
 
 		public long Quantity { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.TimeInForce TimeInForce { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.TimeInForce? TimeInForce { get; set; }
 
 		/// <summary>If timeInForce is set to GTD (Good Till Date), the expireTime will determine when the order expires</summary>
 		public DateTimeOffset ExpireTime { get; set; }
 
 		public string Text { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.OrderState State { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderState? State { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.OrderAction Action { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderAction? Action { get; set; }
 
 		public long ClipSize { get; set; }
 
@@ -71,7 +71,7 @@ namespace Nordpool.ID.PublicApi.v1.Order
 
 		public List<Nordpool.ID.PublicApi.v1.Order.Error.Error> Errors { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.ExecutionRestriction ExecutionRestriction { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.ExecutionRestriction? ExecutionRestriction { get; set; }
 
 	}
 }

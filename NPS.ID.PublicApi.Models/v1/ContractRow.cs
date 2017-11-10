@@ -43,7 +43,7 @@ namespace Nordpool.ID.PublicApi.v1
 		/// <summary>Medium length display name for contract</summary>
 		public string MediumDisplayName { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Contract.ProductType ProductType { get; set; }
+		public Nordpool.ID.PublicApi.v1.Contract.ProductType? ProductType { get; set; }
 
 		/// <summary>Id of product that this contract belongs to</summary>
 		public string ProductId { get; set; }

@@ -14,7 +14,7 @@ namespace Nordpool.ID.PublicApi.v1.Order.Request
 		/// <summary>Unique identifier for this request, provided by the client to track their own requests</summary>
 		public string RequestId { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.OrderModificationType OrderModificationType { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderModificationType? OrderModificationType { get; set; }
 
 		public string UserId { get; set; }
 

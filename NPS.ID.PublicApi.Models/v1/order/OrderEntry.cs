@@ -22,23 +22,23 @@ namespace Nordpool.ID.PublicApi.v1.Order
 
 		public long DeliveryAreaId { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.OrderSide Side { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderSide? Side { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.OrderType OrderType { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderType? OrderType { get; set; }
 
 		public long UnitPrice { get; set; }
 
 		public long Quantity { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.TimeInForce TimeInForce { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.TimeInForce? TimeInForce { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.ExecutionRestriction ExecutionRestriction { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.ExecutionRestriction? ExecutionRestriction { get; set; }
 
 		public DateTimeOffset ExpireTime { get; set; }
 
 		public string Text { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.OrderState State { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderState? State { get; set; }
 
 		public long ClipSize { get; set; }
 

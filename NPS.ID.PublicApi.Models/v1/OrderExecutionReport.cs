@@ -18,7 +18,7 @@ namespace Nordpool.ID.PublicApi.v1
 		/// <summary>Member ID</summary>
 		public string MemberId { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.Error.ErrorType ErrorType { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.Error.ErrorType? ErrorType { get; set; }
 
 		/// <summary>An array of objects that contain fields errorCode and errorMessage.</summary>
 		public List<Nordpool.ID.PublicApi.v1.Order.Error.Error> Errors { get; set; }

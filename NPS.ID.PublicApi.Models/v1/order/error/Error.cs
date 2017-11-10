@@ -11,7 +11,7 @@ namespace Nordpool.ID.PublicApi.v1.Order.Error
 {
 	public class Error 
 	{
-		public Nordpool.ID.PublicApi.v1.Order.Error.ErrorCode ErrorCode { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.Error.ErrorCode? ErrorCode { get; set; }
 
 		public string ErrorMessage { get; set; }
 

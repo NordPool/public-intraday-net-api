@@ -23,7 +23,7 @@ namespace Nordpool.ID.PublicApi.v1.Portfolio
 		/// <summary>Company unique identifier that portfolios are assigned to.</summary>
 		public string CompanyId { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Portfolio.PortfolioPermission Permission { get; set; }
+		public Nordpool.ID.PublicApi.v1.Portfolio.PortfolioPermission? Permission { get; set; }
 
 		public DateTimeOffset ValidFrom { get; set; }
 
@@ -32,7 +32,7 @@ namespace Nordpool.ID.PublicApi.v1.Portfolio
 		/// <summary>If false: update information with the contents received. If true: delete entity indicated in the message</summary>
 		public bool Deleted { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Contract.ContractState State { get; set; }
+		public Nordpool.ID.PublicApi.v1.Contract.ContractState? State { get; set; }
 
 		/// <summary>Currency used for the portfolio</summary>
 		public string Currency { get; set; }

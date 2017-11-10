@@ -11,7 +11,7 @@ namespace Nordpool.ID.PublicApi.v1.Trade.Leg
 {
 	public class PublicTradeLeg  : BaseTradeLeg
 	{
-		public Nordpool.ID.PublicApi.v1.Trade.Leg.LegOwnershipEnum Ownership { get; set; }
+		public Nordpool.ID.PublicApi.v1.Trade.Leg.LegOwnershipEnum? Ownership { get; set; }
 
 	}
 }

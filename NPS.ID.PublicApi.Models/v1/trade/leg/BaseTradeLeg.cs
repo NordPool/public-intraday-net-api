@@ -14,7 +14,7 @@ namespace Nordpool.ID.PublicApi.v1.Trade.Leg
 		/// <summary>Contract Id for the order</summary>
 		public string ContractId { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.OrderSide Side { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderSide? Side { get; set; }
 
 		public long UnitPrice { get; set; }
 

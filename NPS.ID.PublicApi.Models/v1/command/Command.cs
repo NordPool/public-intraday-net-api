@@ -12,7 +12,7 @@ namespace Nordpool.ID.PublicApi.v1.Command
 	/// <summary>Command to send via Websocket</summary>
 	public class Command 
 	{
-		public Nordpool.ID.PublicApi.v1.Command.CommandType Type { get; set; }
+		public Nordpool.ID.PublicApi.v1.Command.CommandType? Type { get; set; }
 
 	}
 }

@@ -14,7 +14,7 @@ namespace Nordpool.ID.PublicApi.v1.Area
 	{
 		public long DlvryAreaId { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Contract.ContractState State { get; set; }
+		public Nordpool.ID.PublicApi.v1.Contract.ContractState? State { get; set; }
 
 		public DateTimeOffset OpenAt { get; set; }
 

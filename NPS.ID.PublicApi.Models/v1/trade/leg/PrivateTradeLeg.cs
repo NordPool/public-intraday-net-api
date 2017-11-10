@@ -21,15 +21,15 @@ namespace Nordpool.ID.PublicApi.v1.Trade.Leg
 
 		public long DeliveryEnd { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.OrderState OrderState { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderState? OrderState { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.OrderType OrderType { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderType? OrderType { get; set; }
 
 		public string Text { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.OrderAction OrderAction { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.OrderAction? OrderAction { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.TimeInForce TimeInForce { get; set; }
+		public Nordpool.ID.PublicApi.v1.Order.TimeInForce? TimeInForce { get; set; }
 
 		public string ClientOrderId { get; set; }
 

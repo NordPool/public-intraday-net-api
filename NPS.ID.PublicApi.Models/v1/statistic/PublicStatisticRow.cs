@@ -29,7 +29,7 @@ namespace Nordpool.ID.PublicApi.v1.Statistic
 
 		public long DayAheadPrice { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Statistic.Tendency Tendency { get; set; }
+		public Nordpool.ID.PublicApi.v1.Statistic.Tendency? Tendency { get; set; }
 
 	}
 }
