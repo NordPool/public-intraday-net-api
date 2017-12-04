@@ -21,5 +21,6 @@ namespace Nordpool.ID.PublicApi.v1.Order.Error
 		INVALID_AREA,
 		PARSING_ERROR,
 		REUQEST_OVER_THROTTLING,
+		INTERNAL_SERVER_ERROR,
 	}
 }
