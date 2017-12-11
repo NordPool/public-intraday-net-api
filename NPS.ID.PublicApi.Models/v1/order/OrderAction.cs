@@ -22,5 +22,6 @@ namespace Nordpool.ID.PublicApi.v1.Order
 		PARTIAL_EXECUTION,
 		FULL_EXECUTION,
 		ICEBERG_SLICE_ADDED,
+		SYSTEM_EXPIRED,
 	}
 }

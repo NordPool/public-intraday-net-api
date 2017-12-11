@@ -16,8 +16,6 @@ namespace Nordpool.ID.PublicApi.v1.Order.Request
 
 		public Nordpool.ID.PublicApi.v1.Order.OrderModificationType? OrderModificationType { get; set; }
 
-		public string UserId { get; set; }
-
 		public List<Nordpool.ID.PublicApi.v1.Order.OrderModification> Orders { get; set; }
 
 	}
