@@ -22,8 +22,5 @@ namespace Nordpool.ID.PublicApi.v1
 
 		public long DeliveryAreaId { get; set; }
 
-		/// <summary>FOK — Fill or Kill, IOC — Immediate or Cancel, NON — No specific restriction, AON — All or none</summary>
-		public string OrderExecutionRestriction { get; set; }
-
 	}
 }

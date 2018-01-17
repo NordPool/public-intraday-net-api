@@ -29,7 +29,13 @@ namespace Nordpool.ID.PublicApi.v1.Statistic
 
 		public long DayAheadPrice { get; set; }
 
+		/// <summary>If false: update information with the contents received, If true: delete entity indicated in the message</summary>
+		public bool Deleted { get; set; }
+
 		public Nordpool.ID.PublicApi.v1.Statistic.Tendency? Tendency { get; set; }
+
+		/// <summary>List of trade histories</summary>
+		public List<Nordpool.ID.PublicApi.v1.Statistic.TradeHistory> Histories { get; set; }
 
 	}
 }

@@ -15,9 +15,6 @@ namespace Nordpool.ID.PublicApi.v1
 		/// <summary>Unique identifier for this request, provided by the client to track their own requests</summary>
 		public string RequestId { get; set; }
 
-		/// <summary>Member ID</summary>
-		public string MemberId { get; set; }
-
 		public Nordpool.ID.PublicApi.v1.Order.Error.ErrorType? ErrorType { get; set; }
 
 		/// <summary>An array of objects that contain fields errorCode and errorMessage.</summary>

@@ -7,23 +7,17 @@
 using System;
 using System.Collections.Generic;
 
-namespace Nordpool.ID.PublicApi.v1.Trade.Leg
+namespace Nordpool.ID.PublicApi.v1.Statistic
 {
-	public class BaseTradeLeg 
+	/// <summary>Trade history</summary>
+	public class TradeHistory 
 	{
-		/// <summary>Contract Id for the order</summary>
-		public string ContractId { get; set; }
-
-		public Nordpool.ID.PublicApi.v1.Order.OrderSide? Side { get; set; }
-
 		public long UnitPrice { get; set; }
 
 		public long Quantity { get; set; }
 
-		public long DeliveryAreaId { get; set; }
-
-		/// <summary>true if leg is the aggressor, null if the information is unavailable (for XBID trades)</summary>
-		public bool Aggressor { get; set; }
+		/// <summary>Time of the last trade</summary>
+		public DateTimeOffset TradeTime { get; set; }
 
 	}
 }
