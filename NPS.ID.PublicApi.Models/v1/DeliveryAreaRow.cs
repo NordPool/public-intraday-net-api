@@ -34,5 +34,7 @@ namespace Nordpool.ID.PublicApi.v1
 		/// <summary>If false: update information with the contents received, If true: delete entity indicated in the message</summary>
 		public bool Deleted { get; set; }
 
+		public string TenantId { get; set; }
+
 	}
 }
