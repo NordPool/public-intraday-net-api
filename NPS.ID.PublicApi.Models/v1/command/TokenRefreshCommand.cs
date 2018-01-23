@@ -15,7 +15,8 @@ namespace Nordpool.ID.PublicApi.v1.Command
 
 		public string NewToken { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Command.CommandType? Type { get; set; }
+        // public Nordpool.ID.PublicApi.v1.Command.CommandType? Type { get; set; }
+        public string Type { get; set; }
 
-	}
+    }
 }
