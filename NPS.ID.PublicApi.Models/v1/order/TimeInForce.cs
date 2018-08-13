@@ -9,12 +9,11 @@ using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Order
 {
-	/// <summary>IOC, FOK, AON, NON, GTD, GFS</summary>
+	/// <summary>IOC, FOK, AON, GTD, GFS</summary>
 	public enum TimeInForce 
 	{
 		IOC,
 		FOK,
-		NON,
 		GTD,
 		GFS,
 	}
