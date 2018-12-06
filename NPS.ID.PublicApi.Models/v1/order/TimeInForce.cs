@@ -14,6 +14,7 @@ namespace Nordpool.ID.PublicApi.v1.Order
 	{
 		IOC,
 		FOK,
+		NON,
 		GTD,
 		GFS,
 	}
