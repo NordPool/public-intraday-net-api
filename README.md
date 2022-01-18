@@ -4,7 +4,7 @@ This repository contains the data objects for interaction with Nord Pool Intrada
 
 ## Disclaimer ##
 
-We offer the data transfer object code and client code examples to aid the development against Nord Pool�s API at no warranty whatsoever. Clients are solely responsible for separately testing and ensuring that interaction with Nord Pool works according to their own standards.
+We offer the data transfer object code and client code examples to aid the development against Nord Pool's API at no warranty whatsoever. Clients are solely responsible for separately testing and ensuring that interaction with Nord Pool works according to their own standards.
 
 ## Usage ##
 
