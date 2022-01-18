@@ -4,7 +4,7 @@ This repository contains the data objects for interaction with Nord Pool Intrada
 
 ## Disclaimer ##
 
-We offer the data transfer object code and client code examples to aid the development against Nord Pool’s API at no warranty whatsoever. Clients are solely responsible for separately testing and ensuring that interaction with Nord Pool works according to their own standards.
+We offer the data transfer object code and client code examples to aid the development against Nord Poolï¿½s API at no warranty whatsoever. Clients are solely responsible for separately testing and ensuring that interaction with Nord Pool works according to their own standards.
 
 ## Usage ##
 
@@ -12,7 +12,7 @@ This repository contains .NET api library project( **NPS.ID.PublicApi.Models.csp
 
 ## Test client ##
 
-A code sample using this library can be found at [https://bitbucket.org/nordpoolspot/public-intraday-api-net-example](https://bitbucket.org/nordpoolspot/public-intraday-api-net-example).
+A code sample using this library can be found at [https://github.com/NordPool/public-intraday-api-net-example](https://github.com/NordPool/public-intraday-api-net-example).
 
 ## Questions, comments and error reporting ##
 
