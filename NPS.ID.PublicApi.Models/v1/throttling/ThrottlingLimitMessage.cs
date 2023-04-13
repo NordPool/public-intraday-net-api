@@ -33,4 +33,5 @@ namespace Nordpool.ID.PublicApi.v1.Throttling
 		public long ThrottlingLoginLimitPer20min { get; set; }
 
 	}
+
 }
