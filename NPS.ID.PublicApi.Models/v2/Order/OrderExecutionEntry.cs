@@ -10,64 +10,64 @@ namespace NPS.ID.PublicApi.Models.v2.Order
 {
     public class OrderExecutionEntry
     {
-	    public long EventSequenceNo { get; set; }
+        public long EventSequenceNo { get; set; }
 
-		public string MarketId { get; set; }
+        public string MarketId { get; set; }
 
-		public string UserId { get; set; }
+        public string UserId { get; set; }
 
-		public string OrderId { get; set; }
+        public string OrderId { get; set; }
 
-		public long RevisionNo { get; set; }
+        public long RevisionNo { get; set; }
 
-		/// <summary>Id of the previous order in this modification chain. When an order is modified and its priority changes, or partially matched, a new order Id is assigned.</summary>
-		public string PreviousOrderId { get; set; }
+        /// <summary>Id of the previous order in this modification chain. When an order is modified and its priority changes, or partially matched, a new order Id is assigned.</summary>
+        public string PreviousOrderId { get; set; }
 
-		/// <summary>The original order id in this modification chain.</summary>
-		public string OriginalOrderId { get; set; }
+        /// <summary>The original order id in this modification chain.</summary>
+        public string OriginalOrderId { get; set; }
 
-		public DateTimeOffset CreatedAt { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
 
-		public DateTimeOffset UpdatedAt { get; set; }
+        public DateTimeOffset UpdatedAt { get; set; }
 
-		/// <summary>UUID for the order, provided by the client to track their own orders</summary>
-		public Guid ClientOrderId { get; set; }
-		
-		public Guid? LinkedBasketId { get; set; }
+        /// <summary>UUID for the order, provided by the client to track their own orders</summary>
+        public Guid ClientOrderId { get; set; }
 
-		/// <summary>The portfolio id of the current order</summary>
-		public string PortfolioId { get; set; }
+        public Guid? LinkedBasketId { get; set; }
 
-		/// <summary>The contract id for current order</summary>
-		public string ContractId { get; set; }
+        /// <summary>The portfolio id of the current order</summary>
+        public string PortfolioId { get; set; }
 
-		public long DeliveryAreaId { get; set; }
+        /// <summary>The contract id for current order</summary>
+        public string ContractId { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.OrderSide? Side { get; set; }
+        public long DeliveryAreaId { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.OrderType? OrderType { get; set; }
+        public Nordpool.ID.PublicApi.v1.Order.OrderSide? Side { get; set; }
 
-		public long UnitPrice { get; set; }
+        public Nordpool.ID.PublicApi.v1.Order.OrderType? OrderType { get; set; }
 
-		public long Quantity { get; set; }
+        public long UnitPrice { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.TimeInForce? TimeInForce { get; set; }
+        public long Quantity { get; set; }
 
-		/// <summary>If timeInForce is set to GTD (Good Till Date), the expireTime will determine when the order expires</summary>
-		public DateTimeOffset ExpireTime { get; set; }
+        public Nordpool.ID.PublicApi.v1.Order.TimeInForce? TimeInForce { get; set; }
 
-		public string Text { get; set; }
+        /// <summary>If timeInForce is set to GTD (Good Till Date), the expireTime will determine when the order expires</summary>
+        public DateTimeOffset ExpireTime { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.OrderState? State { get; set; }
+        public string Text { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.OrderAction? Action { get; set; }
+        public Nordpool.ID.PublicApi.v1.Order.OrderState? State { get; set; }
 
-		public long ClipSize { get; set; }
+        public Nordpool.ID.PublicApi.v1.Order.OrderAction? Action { get; set; }
 
-		public long ClipPriceChange { get; set; }
+        public long ClipSize { get; set; }
 
-		public long RemainingQuantity { get; set; }
+        public long ClipPriceChange { get; set; }
 
-		public Nordpool.ID.PublicApi.v1.Order.ExecutionRestriction? ExecutionRestriction { get; set; }
+        public long RemainingQuantity { get; set; }
+
+        public Nordpool.ID.PublicApi.v1.Order.ExecutionRestriction? ExecutionRestriction { get; set; }
     }
 }
