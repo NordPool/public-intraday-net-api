@@ -16,7 +16,7 @@ using System.Runtime.InteropServices;
  #endif
 [assembly: AssemblyCompany("Nord Pool")]
 [assembly: AssemblyProduct("Intraday API")]
-[assembly: AssemblyCopyright("Copyright ï¿½ 2017")]
+[assembly: AssemblyCopyright("Copyright © 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
