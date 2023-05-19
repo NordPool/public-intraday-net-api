@@ -13,7 +13,7 @@ namespace NPS.ID.PublicApi.Models.v2.Trade
 
         public TradeState? State { get; set; }
 
-        public Currency? Currency { get; set; }
+        public string Currency { get; set; }
 
         public long EventSequenceNo { get; set; }
         
