@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Nordpool.ID.PublicApi.v1.Trade.Leg;
+using NPS.ID.PublicApi.Models.v2.Trade.Leg;
 
 namespace NPS.ID.PublicApi.Models.v2.Trade
 {

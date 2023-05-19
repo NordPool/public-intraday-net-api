@@ -14,6 +14,6 @@ namespace NPS.ID.PublicApi.Models.v2.Trade.Leg
 
         public long DeliveryAreaId { get; set; }
         
-        public bool Aggressor { get; set; }
+        public bool? Aggressor { get; set; }
     }
 }
