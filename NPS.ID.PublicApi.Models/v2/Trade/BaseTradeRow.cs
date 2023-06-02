@@ -21,7 +21,5 @@ namespace NPS.ID.PublicApi.Models.v2.Trade
         
         /// <summary>A medium length display name for the contract.</summary>
         public string MediumDisplayName { get; set; }
-        
-        public bool? SelfTrade { get; set; }
     }
 }
