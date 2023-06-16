@@ -18,11 +18,5 @@ namespace NPS.ID.PublicApi.Models.v2.Trade.Leg
         public DateTimeOffset DeliveryStart { get; set; }
 
         public DateTimeOffset DeliveryEnd { get; set; }
-        
-        public long? RevisionNo { get; set; }
-        
-        public OrderState? State { get; set; }
-
-        public OrderAction? Action { get; set; }
     }
 }
