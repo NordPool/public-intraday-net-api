@@ -30,7 +30,7 @@ namespace Nordpool.ID.PublicApi.v1.Base
 		public string MediumDisplayName { get; set; }
 
 		/// <summary>Trade was made within the same company.</summary>
-		public bool CompanyTrade { get; set; }
+		public bool? CompanyTrade { get; set; }
 
 	}
 }
