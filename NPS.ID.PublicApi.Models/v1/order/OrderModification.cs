@@ -13,8 +13,8 @@ namespace Nordpool.ID.PublicApi.v1.Order
 	{
 		public long RevisionNo { get; set; }
 
-		/// <summary>UUID for the order, provided by the client to track their own orders</summary>
-		public Guid ClientOrderId { get; set; }
+		/// <summary>Id for the order, provided by the client to track their own orders</summary>
+		public string ClientOrderId { get; set; }
 
 		public string OrderId { get; set; }
 
