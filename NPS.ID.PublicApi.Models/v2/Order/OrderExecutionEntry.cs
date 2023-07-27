@@ -54,7 +54,7 @@ namespace NPS.ID.PublicApi.Models.v2.Order
         public Nordpool.ID.PublicApi.v1.Order.TimeInForce? TimeInForce { get; set; }
 
         /// <summary>If timeInForce is set to GTD (Good Till Date), the expireTime will determine when the order expires</summary>
-        public DateTimeOffset ExpireTime { get; set; }
+        public DateTimeOffset? ExpireTime { get; set; }
 
         public string Text { get; set; }
 
@@ -62,11 +62,11 @@ namespace NPS.ID.PublicApi.Models.v2.Order
 
         public Nordpool.ID.PublicApi.v1.Order.OrderAction? Action { get; set; }
 
-        public long ClipSize { get; set; }
+        public long? ClipSize { get; set; }
 
-        public long ClipPriceChange { get; set; }
+        public long? ClipPriceChange { get; set; }
 
-        public long RemainingQuantity { get; set; }
+        public long? RemainingQuantity { get; set; }
 
         public Nordpool.ID.PublicApi.v1.Order.ExecutionRestriction? ExecutionRestriction { get; set; }
     }
