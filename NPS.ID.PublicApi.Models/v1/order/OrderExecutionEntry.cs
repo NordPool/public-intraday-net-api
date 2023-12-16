@@ -63,11 +63,11 @@ namespace Nordpool.ID.PublicApi.v1.Order
 
 		public Nordpool.ID.PublicApi.v1.Order.OrderAction? Action { get; set; }
 
-		public long ClipSize { get; set; }
+		public long? ClipSize { get; set; }
 
-		public long ClipPriceChange { get; set; }
+		public long? ClipPriceChange { get; set; }
 
-		public long RemainingQuantity { get; set; }
+		public long? RemainingQuantity { get; set; }
 
 		public List<Nordpool.ID.PublicApi.v1.Order.Error.Error> Errors { get; set; }
 
