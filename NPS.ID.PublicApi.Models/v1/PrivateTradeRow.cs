@@ -1,11 +1,11 @@
 /*
  *  Copyright 2017 Nord Pool.
- *  This library is intended to aid integration with Nord Pool’s Intraday API and comes without any warranty. Users of this library are responsible for separately testing and ensuring that it works according to their own standards.
+ *  This library is intended to aid integration with Nord Poolï¿½s Intraday API and comes without any warranty. Users of this library are responsible for separately testing and ensuring that it works according to their own standards.
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-using System;
 using System.Collections.Generic;
+using NPS.ID.PublicApi.Models.v1.trade;
 
 namespace Nordpool.ID.PublicApi.v1
 {
@@ -20,6 +20,8 @@ namespace Nordpool.ID.PublicApi.v1
 		public string CancellationDeadLine { get; set; }
 
 		public long RevisionNo { get; set; }
+		
+		public TradeContractPhaseEnum ContractPhase { get; set; }
 
 	}
 }
