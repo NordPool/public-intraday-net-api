@@ -18,7 +18,8 @@ namespace NPS.ID.PublicApi.Models.v2.Trade.Leg
         public DateTimeOffset DeliveryStart { get; set; }
 
         public DateTimeOffset DeliveryEnd { get; set; }
-        
-        public string Text { get; set; }
+
+        #nullable enable
+        public string? Text { get; set; }
     }
 }

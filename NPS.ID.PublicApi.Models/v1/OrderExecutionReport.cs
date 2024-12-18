@@ -1,6 +1,6 @@
 /*
  *  Copyright 2017 Nord Pool.
- *  This library is intended to aid integration with Nord Pool’s Intraday API and comes without any warranty. Users of this library are responsible for separately testing and ensuring that it works according to their own standards.
+ *  This library is intended to aid integration with Nord Pool's Intraday API and comes without any warranty. Users of this library are responsible for separately testing and ensuring that it works according to their own standards.
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
@@ -18,7 +18,9 @@ namespace Nordpool.ID.PublicApi.v1
 		public Nordpool.ID.PublicApi.v1.Order.Error.ErrorType? ErrorType { get; set; }
 
 		/// <summary>An array of objects that contain fields errorCode and errorMessage.</summary>
-		public List<Nordpool.ID.PublicApi.v1.Order.Error.Error> Errors { get; set; }
+		#nullable enable
+		public List<Nordpool.ID.PublicApi.v1.Order.Error.Error>? Errors { get; set; }
+		#nullable disable
 
 		/// <summary>Order execution entries</summary>
 		public List<Nordpool.ID.PublicApi.v1.Order.OrderExecutionEntry> Orders { get; set; }
