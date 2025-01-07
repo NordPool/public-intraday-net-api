@@ -9,10 +9,4 @@
     <PackageId>NPS.ID.PublicApi.Models</PackageId>
     <RootNamespace>NPS.ID.PublicApi.Models</RootNamespace> <!-- ID of the package -->
   </PropertyGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
 </Project>
