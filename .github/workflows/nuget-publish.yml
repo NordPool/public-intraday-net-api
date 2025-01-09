@@ -13,8 +13,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
@@ -24,6 +22,9 @@ jobs:
       - name: Restore Dependencies
         run: dotnet restore
 
+      - name: Build Project
+        run: dotnet build --configuration Release --no-restore
+
       - name: Tag and Push Version
         id: tagging
         uses: anothrNick/github-tag-action@1.67.0
@@ -31,16 +32,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           DEFAULT_BUMP: patch
-          INITIAL_VERSION: 1.0.0 
+          INITIAL_VERSION: 1.0.0
           WITH_V: false
-
-      - name: Debug Tags
-        run: git tag
-
       - name: Pack NuGet Package
-        run: |
-          echo "Packing NuGet package with version: ${{ steps.tagging.outputs.new_tag || '1.0.0' }}"
-          dotnet pack --configuration Release --no-build --output ./nupkg /p:PackageVersion=${{ steps.tagging.outputs.new_tag || '1.0.0' }}
+        run: dotnet pack --configuration Release --no-build --output ./nupkg /p:PackageVersion=${{ steps.tagging.outputs.new_tag || '1.0.0' }}
 
       - name: Publish NuGet Package to GitHub Packages
         env:
