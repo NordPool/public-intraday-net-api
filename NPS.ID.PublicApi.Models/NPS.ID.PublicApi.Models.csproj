@@ -3,10 +3,13 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <Version>1.0.0</Version> <!-- Version of your package -->
-    <Authors>Nord Pool</Authors> <!-- Author name -->
-    <Description>DotNet PublicApi Models</Description> <!-- Provide a description -->
+    <Authors>Nord Pool</Authors>
+    <Description>DotNet PublicApi Models</Description> 
     <PackageId>NPS.ID.PublicApi.Models</PackageId>
-    <RootNamespace>NPS.ID.PublicApi.Models</RootNamespace> <!-- ID of the package -->
+    <RootNamespace>NPS.ID.PublicApi.Models</RootNamespace>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression> 
+    <RepositoryUrl>https://github.com/NordPool/public-intraday-net-api</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Copyright>Copyright Nord Pool</Copyright>
   </PropertyGroup>
 </Project>
