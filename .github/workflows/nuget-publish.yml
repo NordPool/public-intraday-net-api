@@ -39,6 +39,7 @@ jobs:
       - name: Publish NuGet Package to GitHub Packages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: dotnet nuget push ./nupkg/*.nupkg \
-          --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" \
-          --api-key ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          dotnet nuget push ./nupkg/*.nupkg \
+            --source "https://nuget.pkg.github.com/NordPool/index.json" \
+            --api-key ${{ secrets.GITHUB_TOKEN }}
