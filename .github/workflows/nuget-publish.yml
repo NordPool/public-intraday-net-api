@@ -34,7 +34,7 @@ jobs:
           DEFAULT_BUMP: patch
           WITH_V: false
       - name: Pack NuGet Package
-        run: dotnet pack --configuration Release --no-build --output ./nupkg /p:PackageVersion=${{ steps.tagging.outputs.new_tag || '0.1.0-preview' }}
+        run: dotnet pack --configuration Release --no-build --output ./nupkg /p:PackageVersion=${{ steps.tagging.outputs.new_tag || '1.0.0' }}
 
       - name: Publish NuGet Package to GitHub Packages
         env:
