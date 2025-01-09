@@ -3,7 +3,7 @@ name: Publish to GitHub Packages
 on:
   push:
     branches:
-      - main
+      - DEV-38511
   workflow_dispatch:
 
 jobs:
