@@ -3,7 +3,7 @@ name: Publish NuGet Package to GitHub Packages
 on:
   push:
     branches:
-      - DEV-38511
+      - main
   workflow_dispatch:
 
 jobs:
