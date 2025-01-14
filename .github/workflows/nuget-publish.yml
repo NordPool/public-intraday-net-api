@@ -1,0 +1,48 @@
+name: Publish NuGet Package to GitHub Packages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0'
+
+      - name: Restore Dependencies
+        run: dotnet restore
+
+      - name: Build Project
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Tag and Push Version
+        uses: anothrNick/github-tag-action@1.67.0
+        id: tagging
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: false
+          PRERELEASE: false
+          DEFAULT_BUMP: patch
+          
+      - name: Pack NuGet Package
+        run: dotnet pack --configuration Release --no-build --output ./nupkg /p:PackageVersion=${{ steps.tagging.outputs.new_tag || '1.0.0' }}
+
+      - name: Publish NuGet Package to GitHub Packages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          dotnet nuget push ./nupkg/*.nupkg \
+            --source "https://nuget.pkg.github.com/NordPool/index.json" \
+            --api-key ${{ secrets.GITHUB_TOKEN }}

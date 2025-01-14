@@ -1,6 +1,6 @@
 /*
  *  Copyright 2017 Nord Pool.
- *  This library is intended to aid integration with Nord Pool’s Intraday API and comes without any warranty. Users of this library are responsible for separately testing and ensuring that it works according to their own standards.
+ *  This library is intended to aid integration with Nord Pool's Intraday API and comes without any warranty. Users of this library are responsible for separately testing and ensuring that it works according to their own standards.
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
@@ -27,7 +27,7 @@ namespace Nordpool.ID.PublicApi.v1.Statistic
 
 		public long Turnover { get; set; }
 
-		public long DayAheadPrice { get; set; }
+		public long? DayAheadPrice { get; set; }
 
 		/// <summary>If false: update information with the contents received, If true: delete entity indicated in the message</summary>
 		public bool Deleted { get; set; }
