@@ -2,7 +2,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <Authors>Nord Pool</Authors>
     <Description>DotNet PublicApi Models</Description> 
     <PackageId>NPS.ID.PublicApi.Models</PackageId>
