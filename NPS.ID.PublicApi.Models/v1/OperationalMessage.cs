@@ -9,29 +9,39 @@ using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1
 {
-	/// <summary>Operational Message</summary>
+	/// <summary>
+	/// Operational Message
+	/// </summary>
 	public class OperationalMessage 
 	{
-		/// <summary>id</summary>
+		/// <summary>
+		/// Id
+		/// </summary>
 		public Guid Id { get; set; }
 
-		/// <summary>tenant</summary>
-		public string Tenant { get; set; }
+		/// <summary>
+		/// Message Title
+		/// </summary>
+		public string MessageTitle { get; set; }
+		
+		/// <summary>
+		/// Message Body
+		/// </summary>
+		public string MessageBody { get; set; }
 
-		/// <summary>Delivery areas</summary>
-		public List<string> Areas { get; set; }
-
-		/// <summary>message</summary>
-		public string Message { get; set; }
-
-		/// <summary>Is active</summary>
-		public bool IsActive { get; set; }
-
+		/// <summary>
+		/// Valid From
+		/// </summary>
 		public DateTimeOffset ValidFrom { get; set; }
 
+		/// <summary>
+		/// Valid To
+		/// </summary>
 		public DateTimeOffset ValidTo { get; set; }
 
+		/// <summary>
+		/// Created
+		/// </summary>
 		public DateTimeOffset Created { get; set; }
-
 	}
 }
