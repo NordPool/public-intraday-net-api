@@ -32,7 +32,7 @@ namespace Nordpool.ID.PublicApi.v1
 		/// <summary>
 		/// Message Body
 		/// </summary>
-		public string IsRead { get; set; }
+		public bool IsRead { get; set; }
 
 		/// <summary>
 		/// Valid From
