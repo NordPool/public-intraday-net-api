@@ -28,6 +28,11 @@ namespace Nordpool.ID.PublicApi.v1
 		/// Message Body
 		/// </summary>
 		public string MessageBody { get; set; }
+		
+		/// <summary>
+		/// Message Body
+		/// </summary>
+		public string IsRead { get; set; }
 
 		/// <summary>
 		/// Valid From
