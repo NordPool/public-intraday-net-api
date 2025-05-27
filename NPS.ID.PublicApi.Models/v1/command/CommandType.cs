@@ -9,9 +9,15 @@ using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Command
 {
-	public enum CommandType 
+	public enum CommandType
 	{
 		LOGOUT,
 		TOKEN_REFRESH,
+		DEAC_USER_ORDERS,
+		DEAC_COMPANY_ORDERS,
+		ACTI_USER_ORDERS,
+		ACTI_COMPANY_ORDERS,
+		DELETE_USER_ORDERS,
+		DELETE_COMPANY_ORDERS
 	}
 }
