@@ -5,7 +5,6 @@
  */
 
 using System;
-using System.Collections.Generic;
 
 namespace Nordpool.ID.PublicApi.v1.Statistic
 {
@@ -33,9 +32,5 @@ namespace Nordpool.ID.PublicApi.v1.Statistic
 		public bool Deleted { get; set; }
 
 		public Nordpool.ID.PublicApi.v1.Statistic.Tendency? Tendency { get; set; }
-
-		/// <summary>List of trade histories</summary>
-		public List<Nordpool.ID.PublicApi.v1.Statistic.TradeHistory> Histories { get; set; }
-
 	}
 }
