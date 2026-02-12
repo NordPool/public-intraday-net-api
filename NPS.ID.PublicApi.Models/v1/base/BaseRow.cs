@@ -14,6 +14,5 @@ namespace Nordpool.ID.PublicApi.v1.Base
 	{
 		/// <summary>Last modification time (status change) of data</summary>
 		public DateTimeOffset? UpdatedAt { get; set; }
-
 	}
 }
