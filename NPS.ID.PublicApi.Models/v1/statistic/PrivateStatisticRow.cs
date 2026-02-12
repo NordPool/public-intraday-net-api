@@ -8,24 +8,30 @@ using System;
 
 namespace Nordpool.ID.PublicApi.v1.Statistic
 {
+	/// <summary>
+	/// Represents aggregated private statistical data for a specific contract in a delivery area,
+	/// including portfolio, buy/sell quantities and prices, net position, and last trade information.
+	/// </summary>
 	public class PrivateStatisticRow : BaseStatisticRow
 	{
 		public string PortfolioId { get; set; }
 		
-		public long? OwnBuyQuantity { get; set; }
+		public long OwnBuyQuantity { get; set; }
 		
-		public long? OwnBuyAveragePrice { get; set; }
+		public long OwnBuyAveragePrice { get; set; }
 		
-		public long? OwnSellQuantity { get; set; }
+		public long OwnSellQuantity { get; set; }
 		
-		public long? OwnSellAveragePrice { get; set; }
+		public long OwnSellAveragePrice { get; set; }
 		
-		public long? NetQuantity { get; set; }
+		public long NetQuantity { get; set; }
 		
-		public long? NetPosition { get; set; }
+		public long NetPosition { get; set; }
 		
-		public DateTimeOffset? LastTradeTime { get; set; }
+		/// <summary>Time of the last trade</summary>
+		public DateTimeOffset LastTradeTime { get; set; }
 		
+		/// <summary>If false: update information with the contents received, If true: delete entity indicated in the message</summary>
 		public bool Deleted { get; set; }
 	}
 }

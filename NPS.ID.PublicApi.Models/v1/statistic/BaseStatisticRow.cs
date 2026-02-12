@@ -16,6 +16,5 @@ namespace Nordpool.ID.PublicApi.v1.Statistic
 
 		/// <summary>Unique identifier for a contract</summary>
 		public string ContractId { get; set; }
-
 	}
 }
