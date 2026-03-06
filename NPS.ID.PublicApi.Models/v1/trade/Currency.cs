@@ -4,9 +4,6 @@
  *  Please send feedback to idapi@nordpoolgroup.com.
  */
 
-using System;
-using System.Collections.Generic;
-
 namespace Nordpool.ID.PublicApi.v1.Trade
 {
 	/// <summary>Currency code</summary>
@@ -14,5 +11,7 @@ namespace Nordpool.ID.PublicApi.v1.Trade
 	{
 		EUR,
 		GBP,
+		GEL,
+		ISK
 	}
 }
